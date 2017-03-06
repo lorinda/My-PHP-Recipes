@@ -10,7 +10,7 @@ include 'inc/functions.php';
 
 $pageTitle = 'My Blue Apron Meals';
 $recipeTitle = getRecipeTitle($id);
-$subTitle = 'with Kale & Mornay Sauce';
+$subTitle = getRecipeSubTitle($id);
 $addIngredient = '';
 include 'inc/header.php';
 
