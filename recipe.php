@@ -6,6 +6,7 @@ $recipeTitle = 'Sunchoke & Egg Noodle Casserole';
 $subTitle = 'with Kale & Mornay Sauce';
 $addIngredient = '';
 include 'inc/header.php';
+include 'inc/functions.php';
 
 if(isset($_POST['delete']) || isset($_POST['update'])){
     var_dump($_POST);
@@ -30,11 +31,15 @@ if(isset($_GET['id'])){
     <div class="container">
         <div class="col-md-4" style="padding-left: 0px;  padding-right: 0px;">
             <img src='<?php
-              $results = $db->query('SELECT img_src FROM recipe WHERE recipe_id= 2');
-              $image = $results->fetch(PDO::FETCH_ASSOC);
-              foreach($image as $item){
-                  echo $item;
-              }
+                $image = display_image($id);
+                foreach($image as $item){
+                    if($item != 'NULL'){
+                          echo $item;
+                    }else{
+                        echo "/images/No_Image_Taken.jpg";
+                    }
+                }
+                    
               ?>' class="img-responsive">
         </div>
         <div class="col-md-4">
@@ -43,8 +48,7 @@ if(isset($_GET['id'])){
                     <th>Ingredients</th>
                 </tr>
                 <?php 
-                $results = $db->query('SELECT ingredient FROM recipe_ingredients WHERE recipe_id= 2');
-                $ingredients = $results->fetchAll(PDO::FETCH_ASSOC);
+                $ingredients = display_ingredients($id);
                 foreach ($ingredients as $item){
                     echo "<tr><td>";
                     echo $item['ingredient'];
