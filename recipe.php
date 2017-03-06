@@ -1,22 +1,24 @@
 <?php
 include 'inc/connection.php';
 
-$pageTitle = "My Blue Apron Meals";
-$recipeTitle = 'Sunchoke & Egg Noodle Casserole';
-$subTitle = 'with Kale & Mornay Sauce';
-$addIngredient = '';
-include 'inc/header.php';
-include 'inc/functions.php';
-
-if(isset($_POST['delete']) || isset($_POST['update'])){
-    var_dump($_POST);
-}
-
 if(isset($_GET['id'])){
     $id = $_GET['id'];
 }else{
     $id = 2;
 }
+include 'inc/functions.php';
+
+$pageTitle = 'My Blue Apron Meals';
+$recipeTitle = getRecipeTitle($id);
+$subTitle = 'with Kale & Mornay Sauce';
+$addIngredient = '';
+include 'inc/header.php';
+
+if(isset($_POST['delete']) || isset($_POST['update'])){
+    var_dump($_POST);
+}
+
+
 ?>
 <div class="jumbotron well">
     <div class="recipe">
