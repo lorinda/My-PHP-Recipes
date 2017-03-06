@@ -1,0 +1,44 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+    background: url(../images/bg-body.jpg) repeat;
+}
+
+.recipe h1, .recipe h2{
+    text-align: center;
+}
+
+th {
+    font-size: 2em;
+}
+
+
+
+.instructions{
+    border: 1px;
+    background: yellow;
+    width: 50%;
+}
+
+.button--delete{
+		border:0;
+		background:transparent;
+		padding:0;
+		margin-top:3px;
+		margin-left: 5px;
+		font-size:14px;
+		color:#ed5a5a;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+    color: white;
+	background-color: #000;
+
+}
