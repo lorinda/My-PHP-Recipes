@@ -1,4 +1,24 @@
 <?php
+function getRecipeTitle($id){
+    include "connection.php";
+    try{
+        $query = 'SELECT title
+                    FROM recipe
+                    WHERE recipe_id = :id';
+        
+        $statement = $db->prepare($query);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Unable to retrieve title";
+        exit;
+    }
+    $title = $statement->fetch(PDO::FETCH_ASSOC);
+    foreach($title as $item){
+        return $item;
+    }
+    
+}
 
 function display_image($id){
     include "connection.php";
