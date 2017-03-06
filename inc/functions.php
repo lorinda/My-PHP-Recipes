@@ -36,4 +36,22 @@ function display_ingredients($id){
 
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function display_date_and_url($id){
+    include "connection.php";
+    
+    $query = 'SELECT cooked_on, url
+              FROM recipe
+              WHERE recipe_id = :id';
+    
+    try{
+        $statement = $db->prepare($query);
+        $statement->bindParam(':id',$id,PDO::PARAM_INT);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Unable to retrieve date and url";
+        exit;
+    }
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>;
