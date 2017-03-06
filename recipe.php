@@ -8,81 +8,74 @@ if(isset($_GET['id'])){
 }
 include 'inc/functions.php';
 
-$pageTitle = 'My Blue Apron Meals';
 $recipeTitle = getRecipeTitle($id);
 $subTitle = getRecipeSubTitle($id);
-$addIngredient = '';
 include 'inc/header.php';
-
-if(isset($_POST['delete']) || isset($_POST['update'])){
-    var_dump($_POST);
-}
-
 
 ?>
 <div class="jumbotron well">
     <div class="recipe">
-    <h1><?php 
-        echo $recipeTitle; 
-        ?>
-    </h1>
-    <h2><?php 
-        echo $subTitle; 
-        ?>
-    </h2>
-    <div class="container">
-        <div class="col-md-4" style="padding-left: 0px;  padding-right: 0px;">
-            <img src='<?php
-                $image = display_image($id);
-                foreach($image as $item){
-                    if($item != 'NULL'){
-                          echo $item;
-                    }else{
-                        echo "/images/No_Image_Taken.jpg";
-                    }
-                }
-                    
-              ?>' class="img-responsive">
-        </div>
-        <div class="col-md-4">
-            <table>
-                <tr>
-                    <th>Ingredients</th>
-                </tr>
-                <?php 
-                $ingredients = display_ingredients($id);
-                foreach ($ingredients as $item){
-                    echo "<tr><td>";
-                    echo $item['ingredient'];
-                    echo "</td></tr>";
-                }
-
-                ?>
-            </table>
-        </div>
-        <div class="col-md-4">
-            <br>
-            <b>Cooked on:</b>
-            <?php 
-            $dateURL = display_date_and_url($id);
-            foreach ($dateURL as $item){
-                echo $item['cooked_on'];
-                echo "<br>";
-                echo "<a href='".$item['url']."'>"."Link to Full Recipe on Blue Apron.com."."</a>";
-            }
+        <h1><?php 
+            echo $recipeTitle; 
             ?>
-            <br>
-            
-            <br>
-            
-            Update This Page Listing
-        </div>
-    </div>
-    
-    
-    <br>
-</div>
-</div>
+        </h1>
+        <h2><?php 
+            echo $subTitle; 
+            ?>
+        </h2>
+        <div class="container">
+            <div class="col-md-4" style="padding-left: 0px;  padding-right: 0px;">
+                <img src='<?php
+                    $image = getImage($id);
+                    foreach($image as $item){
+                        if($item != 'NULL'){
+                              echo $item;
+                        }else{
+                            echo "/images/No_Image_Taken.jpg";
+                        }
+                    }
+
+                  ?>' class="img-responsive">
+            </div> <!--End col-md-4 div-->
+            <div class="col-md-4">
+                <table>
+                    <tr>
+                        <th>Ingredients</th>
+                    </tr>
+                    <?php 
+                    $ingredients = getIngredients($id);
+                    foreach ($ingredients as $item){
+                        echo "<tr><td>";
+                        echo $item['ingredient'];
+                        echo "</td></tr>";
+                    }
+
+                    ?>
+                </table>
+            </div> <!--End col-md-4 div-->
+            <div class="col-md-4">
+                <br>
+                <b>Cooked on:</b>
+                <?php 
+                $dateURL = getDateUrl($id);
+                foreach ($dateURL as $item){
+                    echo $item['cooked_on'];
+                    echo "<br>";
+                    echo "<a href='".$item['url']."'>"."Link to Full Recipe on Blue Apron.com."."</a>";
+                }
+                ?>
+                <br>
+
+                <br>
+
+                Update This Page Listing
+            </div> <!-- End col-md-4 div-->
+        </div> <!-- End container div -->
+
+
+        <br>
+    </div><!-- End Recipe div -->
+</div><!-- End Jumbotron Well div -->
 
 
 <?php include 'inc/footer.php'; ?>
