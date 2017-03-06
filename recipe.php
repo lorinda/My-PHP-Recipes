@@ -62,13 +62,12 @@ if(isset($_GET['id'])){
             <br>
             <b>Cooked on:</b>
             <?php 
-            $results = $db->query('SELECT cooked_on, url FROM recipe WHERE recipe_id=2');
-                $ingredients = $results->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($ingredients as $item){
-                    echo $item['cooked_on'];
-                    echo "<br>";
-                    echo "<a href='".$item['url']."'>"."Link to Full Recipe on Blue Apron.com."."</a>";
-                }
+            $dateURL = display_date_and_url($id);
+            foreach ($dateURL as $item){
+                echo $item['cooked_on'];
+                echo "<br>";
+                echo "<a href='".$item['url']."'>"."Link to Full Recipe on Blue Apron.com."."</a>";
+            }
             ?>
             <br>
             
