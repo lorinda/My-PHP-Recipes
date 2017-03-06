@@ -20,6 +20,27 @@ function getRecipeTitle($id){
     
 }
 
+function getRecipeSubTitle($id){
+    include "connection.php";
+    try{
+        $query = 'SELECT subtitle
+                    FROM recipe
+                    WHERE recipe_id = :id';
+        
+        $statement = $db->prepare($query);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Unable to retrieve title";
+        exit;
+    }
+    $subtitle = $statement->fetch(PDO::FETCH_ASSOC);
+    foreach($subtitle as $item){
+        return $item;
+    }
+    
+}
+
 function display_image($id){
     include "connection.php";
     try{
