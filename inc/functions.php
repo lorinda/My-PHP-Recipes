@@ -41,7 +41,7 @@ function getRecipeSubTitle($id){
     
 }
 
-function display_image($id){
+function getImage($id){
     include "connection.php";
     try{
         $query = 'SELECT img_src
@@ -58,7 +58,7 @@ function display_image($id){
     return $statement->fetch(PDO::FETCH_ASSOC);    
 }
 
-function display_ingredients($id){
+function getIngredients($id){
     include "connection.php";
     
     try{
@@ -78,7 +78,7 @@ function display_ingredients($id){
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function display_date_and_url($id){
+function getDateUrl($id){
     include "connection.php";
     
     $query = 'SELECT cooked_on, url
