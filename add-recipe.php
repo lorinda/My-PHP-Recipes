@@ -1,16 +1,13 @@
 <?php
 include 'inc/connection.php';
 include 'inc/functions.php';
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    var_dump($_POST);
-}
 include 'inc/header.php';
 
 
 ?>
 <div class="jumbotron well">
     <h1>Add a Recipe</h1>
-    <form action="#" method="post">
+    <form action="add-ingredient.php" method="post">
         <table>
             <tr>
                 <td>
@@ -46,6 +43,7 @@ include 'inc/header.php';
         <label for="url">Blue Apron Website Link</label>
         <input type="text" name="url" id="url" size="40" value="https://www.blueapron.com/recipes/"/>
         <br>
+        <input type="hidden" name="recipe" value="addRecipe"/>
         <input type="submit" value="Continue" />
     </form>
 </div>
