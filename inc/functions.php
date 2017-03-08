@@ -95,4 +95,26 @@ function getDateUrl($id){
     }
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function addRecipe($title, $subtitle, $cooked_on, $img_src, $url ){
+    include "connection.php";
+    
+    $query = 'INSERT INTO recipe(title, subtitle, cooked_on, img_src, url)
+                VALUES(:title, :subtitle, :cooked_on, :img_src, :url)';
+    
+    try{
+        $statement = $db->prepare($query);
+        $statement->bindParam(':title', $title, PDO::PARAM_STR);
+        $statement->bindParam(':subtitle', $subtitle, PDO::PARAM_STR);
+        $statement->bindParam(':cooked_on', $cooked_on, PDO::PARAM_STR);
+        $statement->bindParam(':img_src', $img_src, PDO::PARAM_STR);
+        $statement->bindParam(':url', $url, PDO::PARAM_STR);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Unable to add this recipe";
+        exit;
+    }
+    return true;
+}
 ?>;
+
