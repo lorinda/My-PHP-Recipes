@@ -1,5 +1,4 @@
 <?php
-$pageTitle = "My Blue Apron Meals";
 $recipeTitle = 'Sunchoke & Egg Noodle Casserole';
 $subTitle = 'with Kale & Mornay Sauce';
 $addIngredient = '';
