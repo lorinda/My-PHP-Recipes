@@ -116,5 +116,41 @@ function addRecipe($title, $subtitle, $cooked_on, $img_src, $url ){
     }
     return true;
 }
+
+function addIngredient($recipe_id, $ingredient){
+    include "connection.php";
+    
+    $query = 'INSERT INTO recipe_ingredients(recipe_id,ingredient)
+                VALUES(:recipe_id, :ingredient)';
+    
+    try{
+        $statement = $db->prepare($query);
+        $statement->bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
+        $statement->bindParam(':ingredient', $ingredient, PDO::PARAM_STR);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Could not add this ingredient. ".$e->getMessage();
+        exit;
+    }
+    echo "Ingredient added.";
+    return true;
+}
+
+function getLastID(){
+    include "connection.php";
+    
+    $sql = 'SELECT max(recipe_id) AS id
+                FROM recipe';
+    
+    try{
+        $statement = $db->query($sql);
+    }catch(Exception $e){
+        echo "Unable to Retrieve Last ID";
+        exit;
+    }
+    $result = $statement->fetch();
+    return $result;
+}
+
 ?>;
 
