@@ -8,7 +8,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $cooked_on = trim(filter_input(INPUT_POST,'cooked_on',FILTER_SANITIZE_STRING));
         $img_src = trim(filter_input(INPUT_POST,'img_src',FILTER_SANITIZE_STRING));
         $url = trim(filter_input(INPUT_POST,'url',FILTER_SANITIZE_STRING));
-        var_dump($title);
+        
+        $img_src = '/images/'.$img_src;
+        if(addRecipe($title, $subtitle, $cooked_on, $img_src, $url)){
+            $status = 'Recipe '.$title.' added.';
+        }else{
+            $status = 'Could Not Add Recipe '.$title;
+        }
+        
+        var_dump($img_src);   
+        var_dump($status);
+
     }
     
     
