@@ -26,12 +26,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $title = trim(filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING));
             $subtitle = trim(filter_input(INPUT_POST,'subtitle',FILTER_SANITIZE_STRING));
             $ingredient = trim(filter_input(INPUT_POST,'ingredient',FILTER_SANITIZE_STRING));
+            $amount = trim(filter_input(INPUT_POST,'amount',FILTER_SANITIZE_STRING));
+            $measurement = trim(filter_input(INPUT_POST,'measurement',FILTER_SANITIZE_STRING));
             
             //function to get highest id in recipe table
             $id = getLastID();
             $recipe_id =intval($id['id']);
                     
-            if(addIngredient($recipe_id, $ingredient)){
+            if(addIngredient($recipe_id, $ingredient, $amount, $measurement)){
                  $status = 'Ingredient '.$ingredient.' added.';
                 }else{
                     $status = 'Could Not Add Ingredient: '.$ingredient;
@@ -51,13 +53,19 @@ include 'inc/header.php';
 <div class="jumbotron well">
     <h1>Add Ingredient</h1>
     <form action="#" method="post">
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" id="amount" value="1, 2, etc." size="10"/>
+        <br>
+        <label for="measurement">Measurement</label>
+        <input type="text" name="measurement" id="measurement" value="cups, tbsp, etc." size="10"/>
+        <br>
         <label for="ingredient">Ingredient</label>
         <input type="text" name="ingredient" id="ingredient" size="40"/>
         <input type="hidden" name="title" id="title" value='<?php echo $title; ?>' />
         <input type="hidden" name="subtitle" id="subtitle" value='<?php echo $subtitle; ?>' />
         
         <input type="hidden" name="formIngredient" value="addFormIngredient" />
-        
+        <br>
         <input type="submit" value="Add Ingredient" />
     </form>
     
