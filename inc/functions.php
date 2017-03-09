@@ -117,16 +117,18 @@ function addRecipe($title, $subtitle, $cooked_on, $img_src, $url ){
     return true;
 }
 
-function addIngredient($recipe_id, $ingredient){
+function addIngredient($recipe_id, $ingredient, $amount, $measurement){
     include "connection.php";
     
-    $query = 'INSERT INTO recipe_ingredients(recipe_id,ingredient)
-                VALUES(:recipe_id, :ingredient)';
+    $query = 'INSERT INTO recipe_ingredients(recipe_id,ingredient,amount,measurement)
+                VALUES(:recipe_id, :ingredient, :amount, :measurement)';
     
     try{
         $statement = $db->prepare($query);
         $statement->bindParam(':recipe_id', $recipe_id, PDO::PARAM_INT);
         $statement->bindParam(':ingredient', $ingredient, PDO::PARAM_STR);
+        $statement->bindParam(':amount', $amount, PDO::PARAM_INT);
+        $statement->bindParam(':measurement', $measurement, PDO::PARAM_STR);
         $statement->execute();
     }catch(Exception $e){
         echo "Could not add this ingredient. ".$e->getMessage();
