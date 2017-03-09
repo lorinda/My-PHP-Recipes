@@ -1,17 +1,25 @@
 <?php
-include 'inc/connection.php';
+include 'inc/functions.php';
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
+     //if(checkID($id)){
+        //if id is in recipe table
+            $recipeTitle = getRecipeTitle($id);
+            $subTitle = getRecipeSubTitle($id);
+            //display recipe for id
 }else{
-    $id = 2;
+    $id = '';
+    //display main recipe page
 }
-include 'inc/functions.php';
 
-$recipeTitle = getRecipeTitle($id);
-$subTitle = getRecipeSubTitle($id);
+
+
 include 'inc/header.php';
 
+?>
+<?php
+if(isset($_GET['id'])){
 ?>
 <div class="jumbotron well">
     <div class="recipe">
@@ -61,7 +69,7 @@ include 'inc/header.php';
                 foreach ($dateURL as $item){
                     echo $item['cooked_on'];
                     echo "<br>";
-                    echo "<a href='".$item['url']."'>"."Link to Full Recipe on Blue Apron.com."."</a>";
+                    echo "<a href='".$item['url']."' target='_blank'>"."Link to Full Recipe on Blue Apron.com."."</a>";
                 }
                 ?>
                 <br>
@@ -76,6 +84,21 @@ include 'inc/header.php';
         <br>
     </div><!-- End Recipe div -->
 </div><!-- End Jumbotron Well div -->
+<?php
+}//Close if(isset)
+else{  
+?>
+<div class="jumbotron well">
+    <div class="recipe">
+        <h1><?php 
+            echo "View Recipes"; 
+            ?>
+        </h1>
+    </div>
+</div>
 
+<?php
+} //Close else
+?>
 
 <?php include 'inc/footer.php'; ?>
