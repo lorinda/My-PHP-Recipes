@@ -79,7 +79,7 @@ function getIngredients($id){
     include "connection.php";
     
     try{
-    $query = 'SELECT ingredient
+    $query = 'SELECT ingredient, amount, measurement
     			FROM recipe_ingredients
     			WHERE recipe_id = :id';
 
