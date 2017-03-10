@@ -3,7 +3,7 @@
 function getAllRecipeTitles(){
     include "connection.php";
     try{
-        $query = 'SELECT title
+        $query = 'SELECT title, recipe_id
                     FROM recipe';
         $statement = $db->query($query);
         $result = $statement->fetchALL();
