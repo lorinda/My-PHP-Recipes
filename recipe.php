@@ -91,7 +91,14 @@ else{
                 <form action="" method="get" class="">
                     <label for="selectRecipe">Choose a Recipe:</label>
                     <select name="selectRecipe" id="selectRecipe">
-                        <option>Sunchoke &amp; Egg Noodle Casserole</option>
+                        <?php $allRecipes = getAllRecipeTitles(); 
+                        asort($allRecipes);
+                        foreach($allRecipes as $item){
+                            echo "<option>";
+                            echo $item['title'];
+                            echo "</option>";
+                        }
+                        ?>
                     </select>
                     <input type="submit" name="findRecipe" value="Load" />
                 </form>
