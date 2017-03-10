@@ -1,4 +1,21 @@
 <?php
+
+function getAllRecipeTitles(){
+    include "connection.php";
+    try{
+        $query = 'SELECT title
+                    FROM recipe';
+        $statement = $db->query($query);
+        $result = $statement->fetchALL();
+    }catch(Exception $e){
+        echo "Unable to retrieve recipes";
+        exit;
+    }
+    return $result;
+}
+
+
+
 function getRecipeTitle($id){
     include "connection.php";
     try{
