@@ -22,7 +22,7 @@ include 'inc/header.php';
 if(isset($_GET['id'])){
 ?>
 <div class="jumbotron well">
-    <div class="recipe">
+    <div class="container">
         <h1><?php 
             echo $recipeTitle; 
             ?>
@@ -46,19 +46,23 @@ if(isset($_GET['id'])){
                   ?>' class="img-responsive">
             </div> <!--End col-md-4 div-->
             <div class="col-md-4">
-                <table>
-                    <tr>
-                        <th>Ingredients</th>
-                    </tr>
-                    <?php 
-                    $ingredients = getIngredients($id);
-                    foreach ($ingredients as $item){
-                        echo "<tr><td>";
-                        echo $item['ingredient'];
-                        echo "</td></tr>";
-                    }
-
-                    ?>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Ingredients</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $ingredients = getIngredients($id);
+                        foreach ($ingredients as $item){
+                            echo "<tr><td>";
+                            echo $item['ingredient'];
+                            echo "</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                    
                 </table>
             </div> <!--End col-md-4 div-->
             <div class="col-md-4">
@@ -86,14 +90,51 @@ if(isset($_GET['id'])){
 </div><!-- End Jumbotron Well div -->
 <?php
 }//Close if(isset)
+//////////////No ID set /////////////////
 else{  
 ?>
 <div class="jumbotron well">
-    <div class="recipe">
+    <div class="container">
         <h1><?php 
             echo "View Recipes"; 
             ?>
         </h1>
+        <div class="row">
+            <div class="col-md-4">
+                <form action="" method="get" class="">
+                    <label for="selectRecipe">Choose a Recipe:</label>
+                    <select name="selectRecipe" id="selectRecipe">
+                        <option>Sunchoke &amp; Egg Noodle Casserole</option>
+                    </select>
+                    <input type="submit" name="findRecipe" value="Load" />
+                </form>
+            </div> <!--End "col-md-4" -->
+        </div><!--End "row" -->
+        <h3>Or Choose a Random Recipe</h3>
+        <div class="row">
+             <ul>
+                <?php
+                $random = random_recipe();
+                foreach ($random as $item) {
+                    echo "<div class='col-md-4'>";
+                    echo "<img src='".$item['img_src']."' class='img-responsive'>";
+                    echo "</div>";
+                }
+                ?>							
+            </ul>
+<!-- DELETE LATER
+            <div class="col-md-4">
+                <img src="images/No_Image_Taken.jpg" class="img-responsive">
+            </div>
+            <div class="col-md-4">
+                <img src="images/No_Image_Taken.jpg" class="img-responsive">
+            </div>
+            <div class="col-md-4">
+                <img src="images/No_Image_Taken.jpg" class="img-responsive">
+            </div>
+DELETE LATER --> 
+            
+        </div>
     </div>
 </div>
 
