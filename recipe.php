@@ -88,19 +88,30 @@ else{
         </h1>
         <div class="row">
             <div class="col-md-4">
-                <form action="" method="get" class="">
+                <?php $allRecipes = getAllRecipeTitles(); 
+                ?>
+                <form name="form" class="">
                     <label for="selectRecipe">Choose a Recipe:</label>
-                    <select name="selectRecipe" id="selectRecipe">
-                        <?php $allRecipes = getAllRecipeTitles(); 
-                        asort($allRecipes);
+                    <select name="selectRecipe" id="selectRecipe" onChange="go()">
+                        <?php asort($allRecipes);
                         foreach($allRecipes as $item){
-                            echo "<option>";
+                            echo "<option value='recipe.php?id=";
+                            echo $item['recipe_id'];
+                            echo "'>";
                             echo $item['title'];
                             echo "</option>";
                         }
                         ?>
                     </select>
-                    <input type="submit" name="findRecipe" value="Load" />
+                    <script type="text/javascript">
+                        <!--
+                        function go(){
+                        location= document.form.selectRecipe.
+                        options[document.form.selectRecipe.selectedIndex].value
+                        }
+                        //-->
+                    </script>
+                    <input type="submit" name="findRecipe" value="Load" onclick="go()" />
                 </form>
             </div> <!--End "col-md-4" -->
         </div><!--End "row" -->
