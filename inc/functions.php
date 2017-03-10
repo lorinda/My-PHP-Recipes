@@ -138,6 +138,21 @@ function addIngredient($recipe_id, $ingredient, $amount, $measurement){
     return true;
 }
 
+function isIDValid($id){
+    include "connection.php";
+    $query = 'SELECT recipe_id
+            FROM recipe
+            WHERE recipe_id = :id';
+    try{
+        $statement = $db->prepare($query);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch(Exception $e){
+        return false;
+    }
+    return $statement->fetch();
+}
+
 function getLastID(){
     include "connection.php";
     
@@ -172,5 +187,5 @@ function random_recipe(){
     $result = $statement->fetchAll();
     return $result;
 }
-?>;
+?>
 
