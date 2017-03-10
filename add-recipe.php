@@ -7,7 +7,7 @@ include 'inc/header.php';
 ?>
 <div class="jumbotron well">
     <h1>Add a Recipe</h1>
-    <form action="add-ingredient.php" method="post">
+    <form action="add-ingredient.php" method="post" class="form-horizontal">
         <table>
             <tr>
                 <td>
@@ -36,9 +36,9 @@ include 'inc/header.php';
             </tr>
         </table>
         <br>
-        <p><i>Optional: Add image to /image folder</i></p>
         <label for="img_src">Image Name (include extension .jpg, etc)</label>
-        <input type="text" name="img_src" id="img_src" size="20" />
+        <input type="text" name="img_src" id="img_src" size="20" aria-describedby="helpImage" />
+        <span id="helpImage" class="help-block">Add image to /image folder.</span>
         <br>
         <label for="url">Blue Apron Website Link</label>
         <input type="text" name="url" id="url" size="40" value="https://www.blueapron.com/recipes/"/>
