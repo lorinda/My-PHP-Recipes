@@ -51,6 +51,10 @@ if(isset($_GET['id']) && isIDValid($id)){
                         $ingredients = getIngredients($id);
                         foreach ($ingredients as $item){
                             echo "<tr><td>";
+                            echo $item['amount']." ";
+                            if ($item['measurement'] != "NULL"){
+                              echo $item['measurement']." ";  
+                            }
                             echo $item['ingredient'];
                             echo "</td></tr>";
                         }
@@ -104,12 +108,10 @@ else{
                         ?>
                     </select>
                     <script type="text/javascript">
-                        <!--
                         function go(){
                         location= document.form.selectRecipe.
                         options[document.form.selectRecipe.selectedIndex].value
                         }
-                        //-->
                     </script>
                     <input type="submit" name="findRecipe" value="Load" onclick="go()" />
                 </form>
