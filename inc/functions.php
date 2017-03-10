@@ -120,7 +120,7 @@ function addRecipe($title, $subtitle, $cooked_on, $img_src, $url ){
 function addIngredient($recipe_id, $ingredient, $amount, $measurement){
     include "connection.php";
     
-    $query = 'INSERT INTO recipe_ingredients(recipe_id,ingredient,amount,measurement)
+    $query = 'INSERT INTO recipe_ingredients(recipe_id,ingredient, amount, measurement)
                 VALUES(:recipe_id, :ingredient, :amount, :measurement)';
     
     try{
@@ -154,5 +154,23 @@ function getLastID(){
     return $result;
 }
 
+function random_recipe(){
+    include "connection.php";
+    
+    $sql = 'SELECT recipe_id, img_src
+                FROM recipe
+                WHERE img_src NOT IN("/images/image.jpg","/images/","NULL")
+                ORDER BY RAND()
+                LIMIT 3';
+    
+    try{
+        $statement = $db->query($sql);
+    }catch(Exception $e){
+        echo "Unable to Retrieve Last ID";
+        exit;
+    }
+    $result = $statement->fetchAll();
+    return $result;
+}
 ?>;
 
