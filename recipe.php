@@ -1,10 +1,15 @@
 <?php
 include 'inc/functions.php';
 
-if(isset($_GET['id'])){
+if(isset($_GET['id']) && isIDValid($_GET['id'])){
     $id = $_GET['id'];
-        $recipeTitle = getRecipeTitle($id);
-        $subTitle = getRecipeSubTitle($id);
+        if(getRecipeTitle($id)){
+            $recipeTitle = getRecipeTitle($id);
+            $subTitle = getRecipeSubTitle($id);    
+        }else{
+            $id='';
+        }
+        
             
 }else{
     $id = '';
@@ -14,7 +19,7 @@ include 'inc/header.php';
 
 ?>
 <?php
-if(isset($_GET['id'])){
+if(isset($_GET['id']) && isIDValid($id)){
 //display recipe for id
 ?>
 <div class="jumbotron well">
