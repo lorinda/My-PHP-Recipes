@@ -17,8 +17,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }else{
                     $status = 'Could Not Add Recipe '.$title;
                 }
-            var_dump($_POST);
-        
+            echo '<div class="status">';
+            echo $status;
+            echo '</div>';
         }
     }
     if(isset($_POST['formIngredient'])){
@@ -38,16 +39,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }else{
                     $status = 'Could Not Add Ingredient: '.$ingredient;
                 }
+            echo '<div class="status">';
             echo $status;
+            echo '</div>';
         }
     }
-    var_dump($recipe_id);
 }
-
-
 include 'inc/header.php';
-
-
 ?>
 
 <div class="jumbotron well">
@@ -63,7 +61,6 @@ include 'inc/header.php';
         <input type="text" name="ingredient" id="ingredient" size="40"/>
         <input type="hidden" name="title" id="title" value='<?php echo $title; ?>' />
         <input type="hidden" name="subtitle" id="subtitle" value='<?php echo $subtitle; ?>' />
-        
         <input type="hidden" name="formIngredient" value="addFormIngredient" />
         <br>
         <input type="submit" value="Add Ingredient" />
