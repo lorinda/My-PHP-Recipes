@@ -8,7 +8,7 @@ body {
     background: url(../images/bg-body.jpg) repeat;
 }
 
-.recipe h1, .recipe h2{
+.container h1, .container h2{
     text-align: center;
 }
 
@@ -16,7 +16,12 @@ th {
     font-size: 2em;
 }
 
-
+.status{
+    border: 1px;
+    background: yellow;
+    width: 50%;
+    color: black;
+}
 
 .instructions{
     border: 1px;
