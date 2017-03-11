@@ -66,7 +66,7 @@ include 'inc/header.php';
         <input type="submit" value="Add Ingredient" />
     </form>
     
-    <form action="" method="post">
+    <form action="recipe.php" method="post">
         <label>No more ingredients to add?</label>
         <input type="submit" value="Recipe Finished" />
     </form>
