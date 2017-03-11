@@ -1,13 +1,28 @@
 <?php
-$recipeTitle = 'Sunchoke & Egg Noodle Casserole';
-$subTitle = 'with Kale & Mornay Sauce';
+include 'inc/functions.php';
 $addIngredient = '';
+if(isset($_GET['id']) && isIDValid($_GET['id'])){
+    $id = $_GET['id'];
+        if(getRecipeTitle($id)){
+            $recipeTitle = getRecipeTitle($id);
+            $subTitle = getRecipeSubTitle($id);    
+        }else{
+            $id='';
+        }
+        
+            
+}else{
+    $id = '';
+    //display update page
+}
 include 'inc/header.php';
 include 'inc/connection.php';
 
 if(isset($_POST['delete']) || isset($_POST['update'])){
     var_dump($_POST);
 }
+//<!---If id in $_GET for URL display this page--->
+if(isset($_GET['id']) && isIDValid($_GET['id'])){
 ?>
 <div class="jumbotron well">
     <div class ="instructions">
@@ -17,7 +32,6 @@ if(isset($_POST['delete']) || isset($_POST['update'])){
         echo "<form method='post' action='recipe.php' 
                  onsubmit=\"return confirm('Are you sure you want to rename this recipe?');\">\n";
         echo "<input type='text' value='" . $recipeTitle . "' name='update' size='40' />\n";
-                        
         echo "<input type='submit' class='button--delete' value='[Rename Recipe Title]' />\n";
         echo "</form>";
         ?>
@@ -26,14 +40,12 @@ if(isset($_POST['delete']) || isset($_POST['update'])){
         echo "<form method='post' action='recipe.php' 
                  onsubmit=\"return confirm('Rename recipe subtitle?');\">\n";
         echo "<input type='text' value='" . $subTitle . "' name='update' size='40' />\n";
-                        
         echo "<input type='submit' class='button--delete' value='[Rename Recipe SubTitle]' />\n";
         echo "</form>";
         ?>
     </h4>
     <img src='<?php
-              $results = $db->query('SELECT img_src FROM recipe WHERE recipe_id=2');
-              $image = $results->fetch(PDO::FETCH_ASSOC);
+              $image = getImage($id);
               foreach($image as $item){
                   echo $item;
               }
@@ -55,23 +67,55 @@ if(isset($_POST['delete']) || isset($_POST['update'])){
     </table>
     <table>    
         <?php 
-        $results = $db->query('SELECT ingredient FROM recipe_ingredients WHERE recipe_id=2');
-        $ingredients = $results->fetchAll(PDO::FETCH_ASSOC);
+        $ingredients = getIngredients($id);
         foreach ($ingredients as $item){
             echo "<tr><td>";
             echo "<form method='post' action='recipe.php' 
                  onsubmit=\"return confirm('Are you sure you want to delete this ingredient?');\">\n";
             echo $item['ingredient'];
             echo "<input type='hidden' value='" . $item['ingredient'] . "' name='delete' />\n";
-                        
             echo "<input type='submit' class='button--delete' value='[Delete This Ingredient]' />\n";
             echo "</form>";
             echo "</td></tr>";
         }
-
         ?>
     </table>
     <br>
 </div>
-
+<?php }else{?>
+<!--If No Recipe Chosen, display this page-->
+<div class="jumbotron well">
+    <div class="container">
+        <h1><?php echo "Update or Delete Recipe"; ?>
+        </h1>
+        <div class="row">
+            <div class="col-md-4">
+                <?php $allRecipes = getAllRecipeTitles(); ?>
+                <form name="form" class="">
+                    <label for="selectRecipe">Choose a Recipe:</label>
+                    <select name="selectRecipe" id="selectRecipe" onChange="go()">
+                         <option selected disabled>Choose here</option>
+                        <?php asort($allRecipes);
+                        foreach($allRecipes as $item){
+                            echo "<option value='modify-recipe.php?id=";
+                            echo $item['recipe_id'];
+                            echo "'>";
+                            echo $item['title'];
+                            echo "</option>";
+                        }
+                        ?>
+                    </select>
+                    <script type="text/javascript">
+                        function go(){
+                        location= document.form.selectRecipe.
+                        options[document.form.selectRecipe.selectedIndex].value
+                        }
+                    </script>
+                    <input type="submit" name="findRecipe" value="Load" onclick="go()" />
+                </form>
+            </div> <!--End "col-md-4" -->
+        </div><!--End "row" -->
+    </div><!-- End "container" -->
+</div><!--End "jumbotron" -->
+<?php } //End else?>
 <?php include 'inc/footer.php'; ?>
