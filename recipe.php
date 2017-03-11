@@ -92,12 +92,14 @@ else{
         </h1>
         <div class="row">
             <div class="col-md-4">
-                <?php $allRecipes = getAllRecipeTitles(); 
+                <?php $allRecipes = getAllRecipeTitles();
+                    asort($allRecipes); //Sort by title alphabetically
+                    $topRecipeInForm = array_values($allRecipes);//Choose top recipe for form redirection on pressing 'Load' button. All other recipes load when chosen.
                 ?>
-                <form name="form" class="">
+                <form name="form" method="post" action='<?php echo "recipe.php?id=".$topRecipeInForm[0]['recipe_id'].";" ?>'>
                     <label for="selectRecipe">Choose a Recipe:</label>
                     <select name="selectRecipe" id="selectRecipe" onChange="go()">
-                        <?php asort($allRecipes);
+                        <?php
                         foreach($allRecipes as $item){
                             echo "<option value='recipe.php?id=";
                             echo $item['recipe_id'];
@@ -108,12 +110,13 @@ else{
                         ?>
                     </select>
                     <script type="text/javascript">
+                        //Function to redirect to <option> value page when recipe chosen
                         function go(){
                         location= document.form.selectRecipe.
                         options[document.form.selectRecipe.selectedIndex].value
                         }
                     </script>
-                    <input type="submit" name="findRecipe" value="Load" onclick="go()" />
+                    <input type="submit" name="findRecipe" value="Load" />
                 </form>
             </div> <!--End "col-md-4" -->
         </div><!--End "row" -->
