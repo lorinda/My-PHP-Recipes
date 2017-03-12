@@ -12,8 +12,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $url = trim(filter_input(INPUT_POST,'url',FILTER_SANITIZE_STRING));
 
             $img_src = '/images/'.$img_src;
-                if(addRecipe($title, $subtitle, $cooked_on, $img_src, $url)){
+                if(!empty($title) & !empty($subtitle)){
+                    if(addRecipe($title, $subtitle, $cooked_on, $img_src, $url)){
                     $status = 'Recipe '.$title.' added.';
+                    }
                 }else{
                     $status = 'Could Not Add Recipe '.$title;
                 }
