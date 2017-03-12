@@ -15,12 +15,23 @@ if(isset($_GET['id']) && isIDValid($_GET['id'])){
     $id = '';
     //display update page
 }
-include 'inc/header.php';
 include 'inc/connection.php';
 
 if(isset($_POST['delete']) || isset($_POST['update'])){
-    var_dump($_POST);
+    
 }
+   
+if(isset($_POST['updateTitle'])){
+    var_dump($_POST);
+    if(setRecipeTitle($_POST['updateTitle'],$_POST['id'])){
+        $recipeTitle = getRecipeTitle($id);
+    }else{
+        echo "<div class='status'>Could not update Title</div>";
+    }
+}
+   
+include 'inc/header.php';
+
 //<!---If id in $_GET for URL display this page--->
 if(isset($_GET['id']) && isIDValid($_GET['id'])){
 ?>
@@ -29,15 +40,16 @@ if(isset($_GET['id']) && isIDValid($_GET['id'])){
         <b>Modify this Recipe.</b> Fill in the associated textbox and click the link to rename Titles and Add Ingredients.  Click the link on the right of Ingredients to delete them from the recipe.
     </div>
     <h3><?php 
-        echo "<form method='post' action='recipe.php' 
+        echo "<form method='post' action='' 
                  onsubmit=\"return confirm('Are you sure you want to rename this recipe?');\">\n";
-        echo "<input type='text' value='" . $recipeTitle . "' name='update' size='40' />\n";
+        echo "<input type='text' value='" . $recipeTitle . "' name='updateTitle' size='40' />\n";
+        echo "<input type='hidden' value='". $id ."' name='id' />";
         echo "<input type='submit' class='button--delete' value='[Rename Recipe Title]' />\n";
         echo "</form>";
         ?>
     </h3>
     <h4><?php
-        echo "<form method='post' action='recipe.php' 
+        echo "<form method='post' action='#' 
                  onsubmit=\"return confirm('Rename recipe subtitle?');\">\n";
         echo "<input type='text' value='" . $subTitle . "' name='update' size='40' />\n";
         echo "<input type='submit' class='button--delete' value='[Rename Recipe SubTitle]' />\n";
@@ -57,7 +69,7 @@ if(isset($_GET['id']) && isIDValid($_GET['id'])){
         <tr>
             <td>
                <?php
-                echo "<tr><td><form method='post' action='recipe.php'>";
+                echo "<tr><td><form method='post' action='#'>";
                 echo "<input type='text' value='" . $addIngredient . "' name='update' size='50' />\n";
                 echo "<input type='submit' class='button--delete' value='[Add this Ingredient]' />\n";
                 echo "</form>";
@@ -70,7 +82,7 @@ if(isset($_GET['id']) && isIDValid($_GET['id'])){
         $ingredients = getIngredients($id);
         foreach ($ingredients as $item){
             echo "<tr><td>";
-            echo "<form method='post' action='recipe.php' 
+            echo "<form method='post' action='#' 
                  onsubmit=\"return confirm('Are you sure you want to delete this ingredient?');\">\n";
             echo $item['ingredient'];
             echo "<input type='hidden' value='" . $item['ingredient'] . "' name='delete' />\n";
