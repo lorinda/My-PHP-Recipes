@@ -1,49 +1,38 @@
 <?php
 include 'inc/connection.php';
 include 'inc/functions.php';
-$title = $subtitle = $recipe_id = '';
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(isset($_POST['recipe'])){
-        if($_POST['recipe'] == 'addRecipe'){
-            $title = trim(filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING));
-            $subtitle = trim(filter_input(INPUT_POST,'subtitle',FILTER_SANITIZE_STRING));
-            $cooked_on = trim(filter_input(INPUT_POST,'cooked_on',FILTER_SANITIZE_STRING));
-            $img_src = trim(filter_input(INPUT_POST,'img_src',FILTER_SANITIZE_STRING));
-            $url = trim(filter_input(INPUT_POST,'url',FILTER_SANITIZE_STRING));
+$recipe_id = '';
 
-            $img_src = '/images/'.$img_src;
-                if(!empty($title) & !empty($subtitle)){
-                    if(addRecipe($title, $subtitle, $cooked_on, $img_src, $url)){
-                    $status = 'Recipe '.$title.' added.';
-                    }
-                }else{
-                    $status = 'Could Not Add Recipe '.$title;
-                }
-            echo '<div class="status">';
-            echo $status;
-            echo '</div>';
-        }
-    }
+//function to get highest id in recipe table
+$id = getLastID();
+//convert highest id to integer
+$recipe_id =intval($id['id']);
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['formIngredient'])){
         if($_POST['formIngredient'] == 'addFormIngredient'){
-            $title = trim(filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING));
-            $subtitle = trim(filter_input(INPUT_POST,'subtitle',FILTER_SANITIZE_STRING));
             $ingredient = trim(filter_input(INPUT_POST,'ingredient',FILTER_SANITIZE_STRING));
             $amount = trim(filter_input(INPUT_POST,'amount',FILTER_SANITIZE_STRING));
             $measurement = trim(filter_input(INPUT_POST,'measurement',FILTER_SANITIZE_STRING));
-            
-            //function to get highest id in recipe table
-            $id = getLastID();
-            $recipe_id =intval($id['id']);
-                    
-            if(addIngredient($recipe_id, $ingredient, $amount, $measurement)){
-                 $status = 'Ingredient '.$ingredient.' added.';
+                        
+            //Check that Ingredient and Amount were filled in
+            if(!empty($ingredient) && !empty($amount)){
+                $ingredient = ucwords($ingredient);
+                //Add info to table
+                if(addIngredient($recipe_id, $ingredient, $amount, $measurement)){
+                    $status = 'Ingredient '.$ingredient.' added.';
+                    //Reset variables for new form 
+                    $ingredient = $amount = $measurement = '';
                 }else{
                     $status = 'Could Not Add Ingredient: '.$ingredient;
                 }
-            echo '<div class="status">';
+            }else{
+                $status = "Fill in Amount and Ingredient";
+            }
+            //Display status message after form submit
+            echo '<h2><div class="status">';
             echo $status;
-            echo '</div>';
+            echo '</h2></div>';
         }
     }
 }
@@ -52,17 +41,16 @@ include 'inc/header.php';
 
 <div class="jumbotron well">
     <h1>Add Ingredient</h1>
-    <form action="#" method="post">
-        <label for="amount">Amount</label>
-        <input type="text" name="amount" id="amount" value="1, 2, etc." size="10"/>
+    <form action="" method="post">
+        <label for="amount">Amount (Required)</label>
+        <input type="text" name="amount" id="amount" value='<?php if(isset($amount)){ echo $amount;}?>' size="10"/>
         <br>
         <label for="measurement">Measurement</label>
-        <input type="text" name="measurement" id="measurement" value="cups, tbsp, etc." size="10"/>
+        <input type="text" name="measurement" id="measurement" value="<?php if(isset($measurement)){ echo $measurement;}?>" size="10"/>
+        <span id="helpMeasurement" class="help-block">Examples: cup, oz, doz, etc.</span>
         <br>
-        <label for="ingredient">Ingredient</label>
-        <input type="text" name="ingredient" id="ingredient" size="40"/>
-        <input type="hidden" name="title" id="title" value='<?php echo $title; ?>' />
-        <input type="hidden" name="subtitle" id="subtitle" value='<?php echo $subtitle; ?>' />
+        <label for="ingredient">Ingredient (Required)</label>
+        <input type="text" name="ingredient" id="ingredient" value='<?php if(isset($ingredient)){ echo $ingredient;}?>'size="40"/>
         <input type="hidden" name="formIngredient" value="addFormIngredient" />
         <br>
         <input type="submit" value="Add Ingredient" />
