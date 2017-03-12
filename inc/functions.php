@@ -169,7 +169,6 @@ function addIngredient($recipe_id, $ingredient, $amount, $measurement){
         echo "Could not add this ingredient. ".$e->getMessage();
         exit;
     }
-    echo "Ingredient added.";
     return true;
 }
 
