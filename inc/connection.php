@@ -1,10 +1,8 @@
 <?php
-$user = 'chef';
-$pd = 'c0ok!ngM3als';
-$dbase = 'my_apron';
+require '/private/database-access.php';
 
 try{
-    $db = new PDO('mysql:host=localhost;dbname='.$dbase, $user, $pd);
+    $db = new PDO('mysql:host='.$host.';dbname='.$dbase, $user, $pd);
     $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 }catch(Exception $e){
     echo 'Unable to Connect';
