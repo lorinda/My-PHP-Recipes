@@ -37,6 +37,24 @@ function getRecipeTitle($id){
     
 }
 
+function setRecipeTitle($title, $id){
+    include "connection.php";
+    try{
+        $query = 'UPDATE recipe 
+                    SET title = :title
+                    WHERE recipe_id = :id';
+        $statement = $db->prepare($query);
+        $statement->bindParam(':title',$title, PDO::PARAM_STR);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Unable to Update title";
+        exit;
+    }
+    return true;
+    
+}
+
 function getRecipeSubTitle($id){
     include "connection.php";
     try{
