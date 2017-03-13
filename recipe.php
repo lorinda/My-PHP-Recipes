@@ -3,9 +3,9 @@ include 'inc/functions.php';
 
 if(isset($_GET['id']) && isIDValid($_GET['id'])){
     $id = $_GET['id'];
-        if(getRecipeTitle($id)){
-            $recipeTitle = getRecipeTitle($id);
-            $subTitle = getRecipeSubTitle($id);    
+        if(getTitle($id)){
+            $recipeTitle = getTitle($id);
+            $subTitle = getSubTitle($id);    
         }else{
             $id='';
         }

@@ -16,7 +16,7 @@ function getAllRecipeTitles(){
 
 
 
-function getRecipeTitle($id){
+function getTitle($id){
     include "connection.php";
     try{
         $query = 'SELECT title
@@ -37,7 +37,7 @@ function getRecipeTitle($id){
     
 }
 
-function setRecipeTitle($title, $id){
+function setTitle($title, $id){
     include "connection.php";
     try{
         $query = 'UPDATE recipe 
@@ -55,7 +55,7 @@ function setRecipeTitle($title, $id){
     
 }
 
-function getRecipeSubTitle($id){
+function getSubTitle($id){
     include "connection.php";
     try{
         $query = 'SELECT subtitle
@@ -75,6 +75,25 @@ function getRecipeSubTitle($id){
     }
     
 }
+
+function setSubTitle($subtitle, $id){
+    include "connection.php";
+    try{
+        $query = 'UPDATE recipe 
+                    SET subtitle = :subtitle
+                    WHERE recipe_id = :id';
+        $statement = $db->prepare($query);
+        $statement->bindParam(':subtitle',$subtitle, PDO::PARAM_STR);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Unable to Update title";
+        exit;
+    }
+    return true;
+    
+}
+
 
 function getImage($id){
     include "connection.php";
