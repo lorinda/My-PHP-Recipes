@@ -87,13 +87,11 @@ function setSubTitle($subtitle, $id){
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
     }catch(Exception $e){
-        echo "Unable to Update title";
-        exit;
+        return false;
     }
     return true;
     
 }
-
 
 function getImage($id){
     include "connection.php";
@@ -110,6 +108,22 @@ function getImage($id){
         exit;
     }
     return $statement->fetch(PDO::FETCH_ASSOC);    
+}
+
+function setImage($image, $id){
+    include "connection.php";
+    try{
+        $query = 'UPDATE recipe 
+                    SET img_src = :image
+                    WHERE recipe_id = :id';
+        $statement = $db->prepare($query);
+        $statement->bindParam(':image',$image, PDO::PARAM_STR);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch(Exception $e){
+        return false;
+    }
+    return true;
 }
 
 function getIngredients($id){
@@ -191,6 +205,22 @@ function addIngredient($recipe_id, $ingredient, $amount, $measurement){
     return true;
 }
 
+function deleteIngredient($id, $ingredient){
+    include "connection.php";
+    $query = "DELETE FROM recipe_ingredients
+                WHERE recipe_id = :id AND ingredient = :ingredient";
+    try{
+        $statement = $db->prepare($query);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->bindParam(':ingredient', $ingredient, PDO::PARAM_STR);
+        $statement->execute();        
+    }catch(Exception $e){
+        echo "Could not delete this ingredient. ".$e->getMessage();
+        exit;
+    }
+    return true;
+}
+
 function isIDValid($id){
     include "connection.php";
     $query = 'SELECT recipe_id
@@ -234,7 +264,7 @@ function random_recipe(){
     try{
         $statement = $db->query($sql);
     }catch(Exception $e){
-        echo "Unable to Retrieve Last ID";
+        echo "Unable to pull random recipes";
         exit;
     }
     $result = $statement->fetchAll();
