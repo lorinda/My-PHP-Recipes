@@ -1,5 +1,6 @@
 <?php
 $pageTitle = "My Blue Apron Meals";
+$home = 'selected';
 include 'inc/header.php';
 ?>
 <div class="jumbotron well">
