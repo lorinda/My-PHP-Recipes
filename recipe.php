@@ -1,4 +1,5 @@
 <?php
+$view_recipe = 'selected';
 include 'inc/functions.php';
 
 if(isset($_GET['id']) && isIDValid($_GET['id'])){
