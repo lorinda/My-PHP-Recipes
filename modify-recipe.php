@@ -1,8 +1,10 @@
 <?php
+$modify_recipe = 'selected';
 include 'inc/functions.php';
 include 'inc/connection.php';
 include 'inc/header.php';
 $addIngredient = '';
+$status = '';
 //If id in url is in database
 if(isset($_GET['id']) && isIDValid($_GET['id'])){
     //Get id from url
@@ -21,16 +23,15 @@ if(isset($_GET['id']) && isIDValid($_GET['id'])){
     //display update page
 }
 
-
-var_dump($_POST);
 //If Rename submission clicked for Title      
 if(isset($_POST['title'])){
     $title = trim(filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING));
     $title = ucwords($title);
     if(setTitle($title, $id)){
         $recipeTitle = getTitle($id);
+        $status = 'Title Updated';
     }else{
-        echo "<h2><div class='status'>Could not update Title</div></h2>";
+        $status = 'Could not update Title';
     }    
 }
 //If Rename submission clicked for SubTitle     
@@ -39,16 +40,18 @@ if(isset($_POST['subtitle'])){
     $sub = ucwords($sub);
     if(setSubTitle($sub, $id)){
         $subTitle = getSubTitle($id);
+        $status = 'Subtitle Updated';
     }else{
-        echo "<h2><div class='status'>Could not update SubTitle</div></h2>";
+        $status = 'Could not update SubTitle';
     }    
 }
 //If Choose New Image clicked
 if(isset($_POST['image'])){
     $img = trim(filter_input(INPUT_POST,'image',FILTER_SANITIZE_STRING));
     if(setImage($img, $id)){
+        $status = 'Image Updated';
     }else{
-        echo "<h2><div class='status'>Could not update Image</div></h2>";
+        $status = 'Could not update Image';
     }
 }
 //If Add Ingredient clicked
@@ -56,17 +59,45 @@ if(isset($_POST['addIngredient'])){
     $addIngredient = trim(filter_input(INPUT_POST,'addIngredient',FILTER_SANITIZE_STRING));
     $amount = trim(filter_input(INPUT_POST,'amount',FILTER_SANITIZE_STRING));
     $measurement = trim(filter_input(INPUT_POST,'measurement',FILTER_SANITIZE_STRING));
+    $addIngredient = ucwords($addIngredient);
     if(addIngredient($id, $addIngredient, $amount, $measurement)){
+        $status = $addIngredient.' Added';
     }else{
-        echo "<h2><div class='status'>Could not add Ingredient</div></h2>";
+        $status = 'Could not add Ingredient';
     }
-}  
+} 
+//If Delete Ingredient clicked
+if(isset($_POST['deleteIngredient'])){
+    $ingredient = $_POST['deleteIngredient'];
+    if(deleteIngredient($id,$ingredient)){
+        $status = $ingredient.' Deleted';
+    }else{
+        $status = 'Could not Delete Ingredient';
+    }
+}
 
+//If Delete Recipe 
+if(isset($_POST['DELETE'])){
+    if(deleteRecipe($id)){
+        $status = 'Recipe Deleted';
+    }else{
+        $status = "Recipe NOT Deleted";
+    }
+    
+}
+echo "<div class='status'><h2>".$status."</h2></div>";
 
 if(isset($_GET['id']) && isIDValid($_GET['id'])){
 ?>
 <!---If Recipe chosen and valid display this page--->
 <div class="jumbotron well">
+    <div class="warning">
+        <form method='post' action=''>
+            <input type='submit' class='btn btn-danger' value='DELETE this Recipe' name='DELETE' />;
+        
+        </form>
+    <br><br>
+    </div>
     <div class ="instructions">
         <b>Modify this Recipe.</b> Fill in the associated textbox and click the link to rename Titles and Add Ingredients.  Click the link on the right of Ingredients to delete them from the recipe.
     </div>
@@ -134,10 +165,10 @@ if(isset($_GET['id']) && isIDValid($_GET['id'])){
         $ingredients = getIngredients($id);
         foreach ($ingredients as $item){
             echo "<tr><td>";
-            echo "<form method='post' action='#' 
+            echo "<form method='post' action='' 
                  onsubmit=\"return confirm('Are you sure you want to delete this ingredient?');\">\n";
             echo $item['amount']." ".$item['measurement']." ".$item['ingredient'];
-            echo "<input type='hidden' value='" . $item['ingredient'] . "' name='delete' />\n";
+            echo "<input type='hidden' value='" . $item['ingredient'] . "' name='deleteIngredient' />\n";
             echo "<input type='submit' class='button--delete' value='[Delete This Ingredient]' />\n";
             echo "</form>";
             echo "</td></tr>";
@@ -146,7 +177,9 @@ if(isset($_GET['id']) && isIDValid($_GET['id'])){
     </table>
     <br>
 </div>
-<?php }else{?>
+<?php 
+}else{
+?>
 <!--If No Recipe Chosen, display this page-->
 <div class="jumbotron well">
     <div class="container">
