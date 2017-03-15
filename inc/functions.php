@@ -1,4 +1,26 @@
 <?php
+/* Includes functions for modifying database
+** in this order:
+   
+   getAllRecipeTitles()
+   getTitle($id)
+   setTitle($title, $id)
+   getSubTitle($id)
+   setSubTitle($subtitle, $id)
+   getImage($id)
+   setImage($image, $id)
+   getIngredients($id)
+   addIngredient($recipe_id, $ingredient, $amount, $measurement)
+   deleteIngredient($id, $ingredient)
+   addRecipe($title, $subtitle, $cooked_on, $img_src, $url)
+   deleteRecipe($id)
+   getDateUrl($id)
+   isIDValid($id)
+   getLastID()
+   random_recipe()
+   
+   
+*/
 
 function getAllRecipeTitles(){
     include "connection.php";
@@ -146,45 +168,6 @@ function getIngredients($id){
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getDateUrl($id){
-    include "connection.php";
-    
-    $query = 'SELECT cooked_on, url
-              FROM recipe
-              WHERE recipe_id = :id';
-    
-    try{
-        $statement = $db->prepare($query);
-        $statement->bindParam(':id',$id,PDO::PARAM_INT);
-        $statement->execute();
-    }catch(Exception $e){
-        echo "Unable to retrieve date and url";
-        exit;
-    }
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function addRecipe($title, $subtitle, $cooked_on, $img_src, $url ){
-    include "connection.php";
-    
-    $query = 'INSERT INTO recipe(title, subtitle, cooked_on, img_src, url)
-                VALUES(:title, :subtitle, :cooked_on, :img_src, :url)';
-    
-    try{
-        $statement = $db->prepare($query);
-        $statement->bindParam(':title', $title, PDO::PARAM_STR);
-        $statement->bindParam(':subtitle', $subtitle, PDO::PARAM_STR);
-        $statement->bindParam(':cooked_on', $cooked_on, PDO::PARAM_STR);
-        $statement->bindParam(':img_src', $img_src, PDO::PARAM_STR);
-        $statement->bindParam(':url', $url, PDO::PARAM_STR);
-        $statement->execute();
-    }catch(Exception $e){
-        echo "Unable to add this recipe";
-        exit;
-    }
-    return true;
-}
-
 function addIngredient($recipe_id, $ingredient, $amount, $measurement){
     include "connection.php";
     
@@ -219,6 +202,69 @@ function deleteIngredient($id, $ingredient){
         exit;
     }
     return true;
+}
+
+function addRecipe($title, $subtitle, $cooked_on, $img_src, $url ){
+    include "connection.php";
+    
+    $query = 'INSERT INTO recipe(title, subtitle, cooked_on, img_src, url)
+                VALUES(:title, :subtitle, :cooked_on, :img_src, :url)';
+    
+    try{
+        $statement = $db->prepare($query);
+        $statement->bindParam(':title', $title, PDO::PARAM_STR);
+        $statement->bindParam(':subtitle', $subtitle, PDO::PARAM_STR);
+        $statement->bindParam(':cooked_on', $cooked_on, PDO::PARAM_STR);
+        $statement->bindParam(':img_src', $img_src, PDO::PARAM_STR);
+        $statement->bindParam(':url', $url, PDO::PARAM_STR);
+        $statement->execute();
+    }catch(Exception $e){
+        return false;
+    }
+    return true;
+}
+
+function deleteRecipe($id){
+    include 'connection.php';
+    try{
+        $query1 = 'DELETE FROM recipe
+                WHERE recipe_id = :id';
+        $statement = $db->prepare($query1);
+        $statement->bindParam(':id',$id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch (Exception $e){
+        echo "Unable to delete this recipe";
+        return false;
+    }
+    try{
+        $query2 = 'DELETE FROM recipe_ingredients
+                WHERE recipe_id = :id';
+        $statement = $db->prepare($query2);
+        $statement->bindParam(':id',$id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch (Exception $e){
+        echo "Unable to delete ingredients for this recipe";
+        return false;
+    }
+    return true;
+}
+
+function getDateUrl($id){
+    include "connection.php";
+    
+    $query = 'SELECT cooked_on, url
+              FROM recipe
+              WHERE recipe_id = :id';
+    
+    try{
+        $statement = $db->prepare($query);
+        $statement->bindParam(':id',$id,PDO::PARAM_INT);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Unable to retrieve date and url";
+        exit;
+    }
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function isIDValid($id){
