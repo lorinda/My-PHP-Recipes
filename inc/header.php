@@ -32,19 +32,11 @@ $siteTitle = 'My Blue Apron Meals';
                     
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="../index.php">Home</a></li>
-<!--
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Recipes <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="../recipe.php">View Recipes</a></li>
-                                    <li><a href="../add-recipe.php">Add a Recipe</a></li>
-                                    <li><a href="../modify-recipe.php">Update/Delete Recipe</a></li>
-                                </ul>
-                            </li>
--->                         <li><a href="../recipe.php">View Recipes</a></li>
-                            <li><a href="../add-recipe.php">Add Recipe</a></li>
-                            <li><a href="../modify-recipe.php">Update/Delete Recipe</a></li>
+                            <li <?php if(isset($home)){echo 'class="active"';}?>><a href="../index.php">Home</a></li>
+                            <li <?php if(isset($view_recipe)){echo 'class="active"';}?>><a   
+                            href="../recipe.php">View Recipes</a></li>
+                            <li <?php if(isset($add_recipe)){echo 'class="active"';}?>><a href="../add-recipe.php">Add Recipe</a></li>
+                            <li <?php if(isset($modify_recipe)){echo 'class="active"';}?>><a href="../modify-recipe.php">Update/Delete Recipe</a></li>
                         </ul>
                     </div>
 				</div>
