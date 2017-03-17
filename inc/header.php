@@ -38,6 +38,14 @@ $siteTitle = 'My Blue Apron Meals';
                             <li <?php if(isset($add_recipe)){echo 'class="active"';}?>><a href="../add-recipe.php">Add Recipe</a></li>
                             <li <?php if(isset($modify_recipe)){echo 'class="active"';}?>><a href="../modify-recipe.php">Update/Delete Recipe</a></li>
                         </ul>
+                        <form class="navbar-form navbar-right" role="search" action="search.php">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 				</div>
 			</nav>    
