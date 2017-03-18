@@ -36,42 +36,46 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="jumbotron well">
     <h1>Add a Recipe</h1>
     <form action="add-recipe.php" method="post" class="form-horizontal">
-        <table>
-            <tr>
-                <td>
-                    <label for="title">Recipe Title (required)</label>
-                </td>
-                <td>
-                    <input type="text" name="title" id="title" size="40" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="subtitle">Recipe Subtitle (required)</label>
-                </td>
-                <td>
-                    <input type="text" name="subtitle" id="subtitle" size="40" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="cooked_on">Date Cooked (MM/DD/YYYY)</label>
-                </td>
-                <td>
-                    <input type="text" name="cooked_on" id="cooked_on" size="10" />
-                </td>
-            </tr>
-        </table>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="title">Recipe Title (required)</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="title" id="title" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="subtitle">Recipe Subtitle (required)</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="subtitle" id="subtitle"  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="cooked_on">Date Cooked (MM/DD/YYYY)</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="cooked_on" id="cooked_on" />
+            </div>
+        </div>
         <br>
-        <label for="img_src">Image Name (include extension .jpg, etc)</label>
-        <input type="text" name="img_src" id="img_src" size="20" aria-describedby="helpImage" />
-        <span id="helpImage" class="help-block">Add image to /image folder.</span>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="img_src">Image Name <br>(include extension .jpg, etc)</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="img_src" id="img_src" aria-describedby="helpImage" />
+                <span id="helpImage" class="help-block">Add image to /image folder.</span>
+            </div>
+        </div>
         <br>
-        <label for="url">Blue Apron Website Link</label>
-        <input type="text" name="url" id="url" size="40" value="https://www.blueapron.com/recipes/"/>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="url">Blue Apron Website Link</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="url" id="url" value="https://www.blueapron.com/recipes/"/>
+            </div>
+        </div>
         <br>
         <input type="hidden" name="recipe" value="addRecipe"/>
-        <input type="submit" value="Continue" />
+        <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-success" value="Continue" />
+            </div>
+        </div>
     </form>
 </div>
 <?php
