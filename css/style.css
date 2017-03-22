@@ -8,7 +8,7 @@ body {
     background: url(../images/bg-body.jpg) repeat;
 }
 
-.container h1, .container h2{
+h1, h2{
     text-align: center;
 }
 
@@ -46,4 +46,8 @@ footer {
     color: white;
 	background-color: #000;
 
+}
+
+.blueapron{
+    color: grey;
 }
