@@ -13,12 +13,12 @@ Recipe ingredients are saved and searchable. Actual steps for the recipe are not
 5. View site at index.php.
 
 ## Usage
-######READ a Recipe
+###### READ a Recipe
 1. Open recipe.php.
 2. Choose recipe name in the dropdown or select random picture.
 The recipe page will show a picture (if taken), the recipe title, subtitle, date cooked, ingredient list, and a link to the official recipe page on blueapron.com.
 
-######CREATE a Recipe
+###### CREATE a Recipe
 1. Open add-recipe.php.
 2. Fill in the form (minimum title and subtitle).
 3. Click 'Continue' button.
@@ -27,12 +27,12 @@ The recipe page will show a picture (if taken), the recipe title, subtitle, date
 5. Click 'Add Ingredient' button.
 6. After adding last ingredient, click 'Recipe Finished' button.
 
-######UPDATE a Recipe
+###### UPDATE a Recipe
 1. Open modify-recipe.php.
 2. Choose recipe name in the dropdown.
 3. Follow the directions on the page and click the red link to the right.
 
-######DELETE a Recipe
+###### DELETE a Recipe
 1. Open modify-recipe.php.
 2. Choose recipe name in the dropdown.
 3. Click the 'DELETE this Recipe' button.
