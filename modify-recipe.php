@@ -27,7 +27,7 @@ if(isset($_GET['id']) && isIDValid($_GET['id'])){
 if(isset($_POST['title'])){
     $title = trim(filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING));
     $title = ucwords($title);
-    if(setTitle($title, $id)){
+    if(setTitle($db, $title, $id)){
         $recipeTitle = getTitle($id);
         $status = 'Title Updated';
     }else{
@@ -167,7 +167,9 @@ if(isset($_GET['id']) && isIDValid($_GET['id'])){
             echo "<tr><td>";
             echo "<form method='post' action='' 
                  onsubmit=\"return confirm('Are you sure you want to delete this ingredient?');\">\n";
-            echo $item['amount']." ".$item['measurement']." ".$item['ingredient'];
+            echo $item['amount']." ";
+            if($item['measurement'] != "NULL"){echo $item['measurement'];}
+            echo " ".$item['ingredient'];
             echo "<input type='hidden' value='" . $item['ingredient'] . "' name='deleteIngredient' />\n";
             echo "<input type='submit' class='button--delete' value='[Delete This Ingredient]' />\n";
             echo "</form>";
