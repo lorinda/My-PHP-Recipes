@@ -32,7 +32,7 @@ if(isset($_GET['id']) && isIDValid($id)){
                 <img src='<?php
                     $image = getImage($id);
                     foreach($image as $item){
-                        if($item != 'NULL'){
+                        if($item != 'NULL' && $item !=""){
                               echo $item;
                         }else{
                             echo "/images/No_Image_Taken.jpg";
@@ -97,7 +97,7 @@ else{
                     asort($allRecipes); //Sort by title alphabetically
                     $topRecipeInForm = array_values($allRecipes);//Choose top recipe for form redirection on pressing 'Load' button. All other recipes load when chosen.
                 ?>
-                <form name="form" method="post" action='<?php echo "recipe.php?id=".$topRecipeInForm[0]['recipe_id'].";" ?>'>
+                <form name="form" method="post" action='<?php echo "recipe.php?id=".$topRecipeInForm[0]['recipe_id']; ?>'>
                     <label for="selectRecipe">Choose a Recipe:</label>
                     <select name="selectRecipe" id="selectRecipe" onChange="go()">
                         <?php
