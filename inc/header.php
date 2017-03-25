@@ -33,7 +33,7 @@ $siteTitle = 'My Meals';
                             <li <?php if(isset($home)){echo 'class="active"';}?>><a href="../index.php">Home</a></li>
                             <li <?php if(isset($view_recipe)){echo 'class="active"';}?>><a   
                             href="../recipe.php">View Recipes</a></li>
-                            <li <?php if(isset($add_recipe)){echo 'class="active"';}?>><a href="../add-recipe.php">Add Recipe</a></li>
+                            <li <?php if(isset($add_recipe)){echo 'class="active"';}?>><a href="../add.php">Add Recipe</a></li>
                             <li <?php if(isset($modify_recipe)){echo 'class="active"';}?>><a href="../modify-recipe.php">Update/Delete Recipe</a></li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search" method="post" action="search.php">
