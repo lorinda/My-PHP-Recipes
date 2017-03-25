@@ -22,6 +22,7 @@
    
 */
 
+
 function getAllRecipeTitles(){
     include "connection.php";
     try{
@@ -59,8 +60,7 @@ function getTitle($id){
     
 }
 
-function setTitle($title, $id){
-    include "connection.php";
+function setTitle($db, $title, $id){
     try{
         $query = 'UPDATE recipe 
                     SET title = :title
@@ -311,6 +311,24 @@ function random_recipe(){
         $statement = $db->query($sql);
     }catch(Exception $e){
         echo "Unable to pull random recipes";
+        exit;
+    }
+    $result = $statement->fetchAll();
+    return $result;
+}
+
+function search_recipe($db, $search_term){
+    $sql = 'SELECT distinct(recipe.title), recipe.recipe_id
+            FROM recipe INNER JOIN recipe_ingredients
+            ON recipe.recipe_id = recipe_ingredients.recipe_id
+            WHERE recipe.title LIKE :search OR recipe_ingredients.ingredient LIKE :search';
+    try{
+        $statement = $db->prepare($sql);
+        //No quotes needed in LIKE statement because of PDO::PARAM_STR
+        $statement->bindParam(':search', $search_term, PDO::PARAM_STR);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Could not search: ".$e->getMessage();
         exit;
     }
     $result = $statement->fetchAll();
