@@ -8,9 +8,14 @@ body {
     background: url(../images/bg-body.jpg) repeat;
 }
 
+.panel{
+    background-color: #eee;
+}
+
 h1, h2{
     text-align: center;
 }
+
 
 th {
     font-size: 2em;
