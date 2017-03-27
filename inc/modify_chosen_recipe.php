@@ -27,7 +27,7 @@
         echo "</form>";
         ?>
     </h4>
-    <img src='<?php $image = getImage($id);
+    <img src='<?php $image = get_image($db, $id);
               foreach($image as $item){ 
                 if($item != 'NULL'){
                     echo $item;
@@ -70,7 +70,7 @@
     </table>
     <table>    
         <?php 
-        $ingredients = getIngredients($id);
+        $ingredients = get_ingredients($db, $id);
         foreach ($ingredients as $item){
             echo "<tr><td>";
             echo "<form method='post' action='' 
@@ -85,5 +85,15 @@
         }
         ?>
     </table>
+    <hr>
+    <?php 
+    $url = get_URL($db, $id);
+        echo "<form method='post' action='' 
+                 onsubmit=\"return confirm('Are you sure you want to change the linked website?');\">\n";
+        echo "<input type='text' value='" . $url . "' name='website' size='60' />\n";
+        echo "<input type='hidden' value='". $id ."' name='id' />";
+        echo "<input type='submit' class='button--delete' value='[Rename Recipe Website]' />\n";
+        echo "</form>";
+        ?>
     <br>
 </div>
