@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $title=ucwords($title);
             $subtitle = ucwords($subtitle);
             //Add Recipe to the database
-            if(addRecipe($title, $subtitle, $cooked_on, $img_src, $url)){
+            if(add_recipe($db, $title, $subtitle, $cooked_on, $img_src, $url)){
             }
         }else{
             //Display error_message after form submit
@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $recipe_id = '';
 
         //function to get highest id in recipe table    
-        $id = getLastID();
+        $id = get_last_id($db);
         //convert highest id to integer
         $recipe_id =intval($id['id']);
         if($_POST['formIngredient'] == 'addFormIngredient'){
@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(!empty($ingredient) && !empty($amount)){
                 $ingredient = ucwords($ingredient);
                 //Add info to table
-                if(addIngredient($recipe_id, $ingredient, $amount, $measurement)){
+                if(add_ingredient($db, $recipe_id, $ingredient, $amount, $measurement)){
                     $status = 'Ingredient '.$ingredient.' added.';
                     //Reset variables for new form 
                     $ingredient = $amount = $measurement = '';
