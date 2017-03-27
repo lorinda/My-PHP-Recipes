@@ -1,30 +1,6 @@
 <?php
-/* Includes functions for modifying database
-** in this order:
-   
-   getAllRecipeTitles()
-   getTitle($id)
-   setTitle($title, $id)
-   getSubTitle($id)
-   setSubTitle($subtitle, $id)
-   getImage($id)
-   setImage($image, $id)
-   getIngredients($id)
-   addIngredient($recipe_id, $ingredient, $amount, $measurement)
-   deleteIngredient($id, $ingredient)
-   addRecipe($title, $subtitle, $cooked_on, $img_src, $url)
-   deleteRecipe($id)
-   getDateUrl($id)
-   isIDValid($id)
-   getLastID()
-   random_recipe()
-   
-   
-*/
 
-
-function getAllRecipeTitles(){
-    include "connection.php";
+function get_all_recipe_titles($db){
     try{
         $query = 'SELECT title, recipe_id
                     FROM recipe';
@@ -39,8 +15,7 @@ function getAllRecipeTitles(){
 
 
 
-function getTitle($id){
-    include "connection.php";
+function get_title($db, $id){
     try{
         $query = 'SELECT title
                     FROM recipe
@@ -60,7 +35,7 @@ function getTitle($id){
     
 }
 
-function setTitle($db, $title, $id){
+function set_title($db, $title, $id){
     try{
         $query = 'UPDATE recipe 
                     SET title = :title
@@ -77,8 +52,7 @@ function setTitle($db, $title, $id){
     
 }
 
-function getSubTitle($id){
-    include "connection.php";
+function get_subtitle($db, $id){
     try{
         $query = 'SELECT subtitle
                     FROM recipe
@@ -98,8 +72,7 @@ function getSubTitle($id){
     
 }
 
-function setSubTitle($subtitle, $id){
-    include "connection.php";
+function set_subtitile($db, $subtitle, $id){
     try{
         $query = 'UPDATE recipe 
                     SET subtitle = :subtitle
@@ -115,8 +88,7 @@ function setSubTitle($subtitle, $id){
     
 }
 
-function getImage($id){
-    include "connection.php";
+function get_image($db, $id){
     try{
         $query = 'SELECT img_src
                     FROM recipe
@@ -132,8 +104,7 @@ function getImage($id){
     return $statement->fetch(PDO::FETCH_ASSOC);    
 }
 
-function setImage($image, $id){
-    include "connection.php";
+function set_image($db, $image, $id){
     try{
         $query = 'UPDATE recipe 
                     SET img_src = :image
@@ -148,9 +119,7 @@ function setImage($image, $id){
     return true;
 }
 
-function getIngredients($id){
-    include "connection.php";
-    
+function get_ingredients($db, $id){
     try{
     $query = 'SELECT ingredient, amount, measurement
     			FROM recipe_ingredients
@@ -168,9 +137,7 @@ function getIngredients($id){
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function addIngredient($recipe_id, $ingredient, $amount, $measurement){
-    include "connection.php";
-    
+function add_ingredient($db, $recipe_id, $ingredient, $amount, $measurement){
     $query = 'INSERT INTO recipe_ingredients(recipe_id,ingredient, amount, measurement)
                 VALUES(:recipe_id, :ingredient, :amount, :measurement)';
     
@@ -188,8 +155,7 @@ function addIngredient($recipe_id, $ingredient, $amount, $measurement){
     return true;
 }
 
-function deleteIngredient($id, $ingredient){
-    include "connection.php";
+function delete_ingredient($db, $id, $ingredient){
     $query = "DELETE FROM recipe_ingredients
                 WHERE recipe_id = :id AND ingredient = :ingredient";
     try{
@@ -204,9 +170,7 @@ function deleteIngredient($id, $ingredient){
     return true;
 }
 
-function addRecipe($title, $subtitle, $cooked_on, $img_src, $url ){
-    include "connection.php";
-    
+function add_recipe($db, $title, $subtitle, $cooked_on, $img_src, $url ){
     $query = 'INSERT INTO recipe(title, subtitle, cooked_on, img_src, url)
                 VALUES(:title, :subtitle, :cooked_on, :img_src, :url)';
     
@@ -224,8 +188,7 @@ function addRecipe($title, $subtitle, $cooked_on, $img_src, $url ){
     return true;
 }
 
-function deleteRecipe($id){
-    include 'connection.php';
+function delete_recipe($db, $id){
     try{
         $query1 = 'DELETE FROM recipe
                 WHERE recipe_id = :id';
@@ -249,9 +212,7 @@ function deleteRecipe($id){
     return true;
 }
 
-function getDateUrl($id){
-    include "connection.php";
-    
+function get_date_url($db, $id){
     $query = 'SELECT cooked_on, url
               FROM recipe
               WHERE recipe_id = :id';
@@ -281,7 +242,6 @@ function get_URL($db, $id){
     }
     return $statement->fetch(PDO::FETCH_ASSOC)['url'];
 }
-
 function change_website($db, $id, $url){
     try{
         $sql = 'UPDATE recipe
@@ -298,8 +258,7 @@ function change_website($db, $id, $url){
     return true;
 }
 
-function isIDValid($id){
-    include "connection.php";
+function is_id_valid($db, $id){
     $query = 'SELECT recipe_id
             FROM recipe
             WHERE recipe_id = :id';
@@ -313,9 +272,7 @@ function isIDValid($id){
     return $statement->fetch();
 }
 
-function getLastID(){
-    include "connection.php";
-    
+function getLastID($db){
     $sql = 'SELECT max(recipe_id) AS id
                 FROM recipe';
     
@@ -329,9 +286,7 @@ function getLastID(){
     return $result;
 }
 
-function random_recipe(){
-    include "connection.php";
-    
+function random_recipe($db){
     $sql = 'SELECT recipe_id, img_src
                 FROM recipe
                 WHERE img_src NOT IN("/images/image.jpg","/images/","NULL")
