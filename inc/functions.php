@@ -72,7 +72,7 @@ function get_subtitle($db, $id){
     
 }
 
-function set_subtitile($db, $subtitle, $id){
+function set_subtitle($db, $subtitle, $id){
     try{
         $query = 'UPDATE recipe 
                     SET subtitle = :subtitle
@@ -272,7 +272,7 @@ function is_id_valid($db, $id){
     return $statement->fetch();
 }
 
-function getLastID($db){
+function get_last_id($db){
     $sql = 'SELECT max(recipe_id) AS id
                 FROM recipe';
     
