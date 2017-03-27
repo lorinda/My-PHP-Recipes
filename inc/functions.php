@@ -267,6 +267,37 @@ function getDateUrl($id){
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function get_URL($db, $id){
+    try{
+        $sql = 'SELECT url
+                FROM recipe
+                WHERE recipe_id = :id';
+        $statement = $db->prepare($sql);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch (Exception $e){
+        echo "Could not get linked website. ".$e->getMessage();
+        exit;
+    }
+    return $statement->fetch(PDO::FETCH_ASSOC)['url'];
+}
+
+function change_website($db, $id, $url){
+    try{
+        $sql = 'UPDATE recipe
+                SET url = :url
+                WHERE recipe_id = :id';
+        $statement = $db->prepare($sql);
+        $statement->bindParam(":url", $url, PDO::PARAM_STR);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+    }catch(Exception $e){
+        echo "Could not change linked website. ".$e->getMessage();
+        exit;
+    }
+    return true;
+}
+
 function isIDValid($id){
     include "connection.php";
     $query = 'SELECT recipe_id
