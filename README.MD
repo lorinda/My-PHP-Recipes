@@ -5,7 +5,7 @@ Recipe ingredients are saved and searchable. Actual steps for the recipe are not
 ## Installation
 1. Install local server.
 2. Clone Repo to web root.
-3. Import myrecipes.sql to phpmyadmin
+3. Import my_apron.sql to phpmyadmin
     (Database name: my_apron)
 4. Update inc/connection.php
     * 4a. Delete line 2: ```require '/private/database-access.php';```
@@ -14,12 +14,12 @@ Recipe ingredients are saved and searchable. Actual steps for the recipe are not
 
 ## Usage
 ###### READ a Recipe
-1. Open recipe.php.
+1. Click "View Recipes" navigation link.
 2. Choose recipe name in the dropdown or select random picture.
 The recipe page will show a picture (if taken), the recipe title, subtitle, date cooked, ingredient list, and a link to the official recipe page on blueapron.com.
 
 ###### CREATE a Recipe
-1. Open add-recipe.php.
+1. Click "Add Recipe" navigation link.
 2. Fill in the form (minimum title and subtitle).
 3. Click 'Continue' button.
 4. Add the amount, measurement, and name of the ingredient.
@@ -28,12 +28,12 @@ The recipe page will show a picture (if taken), the recipe title, subtitle, date
 6. After adding last ingredient, click 'Recipe Finished' button.
 
 ###### UPDATE a Recipe
-1. Open modify-recipe.php.
+1. Click "UPDATE/DELTE Recipe" navigation link.
 2. Choose recipe name in the dropdown.
 3. Follow the directions on the page and click the red link to the right.
 
 ###### DELETE a Recipe
-1. Open modify-recipe.php.
+1. Click "UPDATE/DELTE Recipe" navigation link.
 2. Choose recipe name in the dropdown.
 3. Click the 'DELETE this Recipe' button.
 
