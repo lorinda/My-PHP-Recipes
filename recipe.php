@@ -74,7 +74,7 @@ if(isset($_GET['id']) && isIDValid($id)){
                 }
                 ?>
                 <br><br>
-                <a href="modify-recipe.php?id=<?php echo $id; ?>">Update This Page Listing</a>
+                <a href="modify-recipe.php?id=<?php echo $id; ?>"><div class="button--delete">Update This Page Listing</div></a>
             </div> <!-- End col-md-4 div-->
         </div> <!-- End container div -->
         <br>
