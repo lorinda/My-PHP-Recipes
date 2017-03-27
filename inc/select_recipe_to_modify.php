@@ -4,7 +4,7 @@
         </h1>
         <div class="row">
             <div class="col-md-4">
-                <?php $allRecipes = getAllRecipeTitles(); ?>
+                <?php $allRecipes = get_all_recipe_titles($db); ?>
                 <form name="form" class="">
                     <label for="selectRecipe">Choose a Recipe:</label>
                     <select name="selectRecipe" id="selectRecipe" onChange="go()">
