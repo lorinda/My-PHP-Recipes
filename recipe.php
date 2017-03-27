@@ -1,12 +1,13 @@
 <?php
 $view_recipe = 'selected';
 include 'inc/functions.php';
+include 'inc/connection.php';
 
 if(isset($_GET['id']) && isIDValid($_GET['id'])){
     $id = $_GET['id'];
-        if(getTitle($id)){
-            $recipeTitle = getTitle($id);
-            $subTitle = getSubTitle($id);    
+        if(get_title($db, $id)){
+            $recipeTitle = get_title($db, $id);
+            $subTitle = get_subtitle($db, $id);    
         }else{
             $id='';
         }
@@ -20,7 +21,7 @@ include 'inc/header.php';
 
 ?>
 <?php
-if(isset($_GET['id']) && isIDValid($id)){
+if(isset($_GET['id']) && is_id_valid($db, $id)){
 //display recipe for id
 ?>
 <div class="jumbotron well">
@@ -30,7 +31,7 @@ if(isset($_GET['id']) && isIDValid($id)){
         <div class="container">
             <div class="col-md-4" style="padding-left: 0px;  padding-right: 0px;">
                 <img src='<?php
-                    $image = getImage($id);
+                    $image = get_image($db, $id);
                     foreach($image as $item){
                         if($item != 'NULL' && $item !=""){
                               echo $item;
@@ -49,7 +50,7 @@ if(isset($_GET['id']) && isIDValid($id)){
                     </thead>
                     <tbody>
                         <?php 
-                        $ingredients = getIngredients($id);
+                        $ingredients = get_ingredients($db, $id);
                         foreach ($ingredients as $item){
                             echo "<tr><td>";
                             echo $item['amount']." ";
@@ -66,7 +67,7 @@ if(isset($_GET['id']) && isIDValid($id)){
             <div class="col-md-4">
                 <br><b>Cooked on:</b>
                 <?php 
-                $dateURL = getDateUrl($id);
+                $dateURL = get_date_url($db, $id);
                 foreach ($dateURL as $item){
                     echo $item['cooked_on'];
                     echo "<br>";
@@ -93,7 +94,7 @@ else{
         </h1>
         <div class="row">
             <div class="col-md-4">
-                <?php $allRecipes = getAllRecipeTitles();
+                <?php $allRecipes = get_all_recipe_titles($db);
                     asort($allRecipes); //Sort by title alphabetically
                     $topRecipeInForm = array_values($allRecipes);//Choose top recipe for form redirection on pressing 'Load' button. All other recipes load when chosen.
                 ?>
@@ -125,7 +126,7 @@ else{
         <div class="row">
              <ul>
                 <?php
-                $random = random_recipe();
+                $random = random_recipe($db);
                 foreach ($random as $item) {
                     echo "<div class='col-md-4'>";
                     echo "<a href='recipe.php?id=".$item['recipe_id']."'>";
