@@ -70,7 +70,7 @@ if(isset($_GET['id']) && isIDValid($id)){
                 foreach ($dateURL as $item){
                     echo $item['cooked_on'];
                     echo "<br>";
-                    echo "<a href='".$item['url']."' target='_blank'>"."Link to Full Recipe on Blue Apron.com."."</a>";
+                    echo "<a href='".$item['url']."' target='_blank'>"."<h4>Link to Full Recipe on Blue Apron.com.</h4>"."</a>";
                 }
                 ?>
                 <br><br>
