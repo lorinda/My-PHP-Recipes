@@ -3,7 +3,7 @@ $view_recipe = 'selected';
 include 'inc/functions.php';
 include 'inc/connection.php';
 
-if(isset($_GET['id']) && isIDValid($_GET['id'])){
+if(isset($_GET['id']) && is_id_valid($db, $_GET['id'])){
     $id = $_GET['id'];
         if(get_title($db, $id)){
             $recipeTitle = get_title($db, $id);
