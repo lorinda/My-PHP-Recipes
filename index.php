@@ -24,7 +24,7 @@ include 'inc/header.php';
             <div class="panel-body">
                 <h2>PROBLEM</h2>
                 <p>Blue Apron has a search tool for all of its recipes by ingredient and title <a href="https://www.blueapron.com/cookbook" target="_blank">(HERE)</a>, but I only want to search the recipes I have cooked.</p>
-                <p> I usually take pictures of the finished recipes, but they are not organized by recipe name.</p>
+                <p> I usually take pictures of the finished recipes, but they were not organized by recipe name (only date taken).</p>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@ include 'inc/header.php';
             <div class="panel-body">
                 <h2>PROJECT GOALS</h2>
                 <ul>
-                    <li>Create a database of pictures and recipes I have cooked</li>
+                    <li>Create a database of pictures and recipes I cooked</li>
                     <li>Make searchable by ingredient and recipe name</li>
                     <li>Add multiple ingredients to the same recipe</li>
                     <li>Create alphabetized drop down of recipes for selection</li>
@@ -49,7 +49,7 @@ include 'inc/header.php';
         <div class="panel panel-default">
             <div class="panel-body" align="center">
                 <h2>FUTURE WORK</h2>
-                <p>Future work could include sorting recipes by the date cooked or creating a separate recipe project that includes cooking steps.</p>
+                <p>Future work could include sorting recipes by the date cooked, creating a separate recipe project that includes cooking steps, or redesigning using Object Oriented principles.</p>
             </div>
         </div>
     </div>
