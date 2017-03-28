@@ -35,7 +35,7 @@
                     echo "/images/No_Image_Taken.jpg";
                 }
               }
-              ?>' height="150" width="180">
+              ?>' alt="Image of <?php echo $recipeTitle.' '.$subTitle; ?>" height="150" width="180">
     <?php
     if($image['img_src'] == "NULL"){
         $image['img_src'] = "/images/No_Image_Taken.jpg";
@@ -86,6 +86,7 @@
         ?>
     </table>
     <hr>
+    <h4>Change the linked recipe url:</h4>
     <?php 
     $url = get_URL($db, $id);
         echo "<form method='post' action='' 
