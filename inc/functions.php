@@ -122,7 +122,7 @@ function set_image($db, $image, $id){
 function get_ingredients($db, $id){
     try{
     $query = 'SELECT ingredient, amount, measurement
-    			FROM recipe_ingredients
+    			FROM ingredients
     			WHERE recipe_id = :id';
 
     $statement = $db->prepare($query);
@@ -138,7 +138,7 @@ function get_ingredients($db, $id){
 }
 
 function add_ingredient($db, $recipe_id, $ingredient, $amount, $measurement){
-    $query = 'INSERT INTO recipe_ingredients(recipe_id,ingredient, amount, measurement)
+    $query = 'INSERT INTO ingredients(recipe_id,ingredient, amount, measurement)
                 VALUES(:recipe_id, :ingredient, :amount, :measurement)';
     
     try{
@@ -156,7 +156,7 @@ function add_ingredient($db, $recipe_id, $ingredient, $amount, $measurement){
 }
 
 function delete_ingredient($db, $id, $ingredient){
-    $query = "DELETE FROM recipe_ingredients
+    $query = "DELETE FROM ingredients
                 WHERE recipe_id = :id AND ingredient = :ingredient";
     try{
         $statement = $db->prepare($query);
@@ -200,7 +200,7 @@ function delete_recipe($db, $id){
         return false;
     }
     try{
-        $query2 = 'DELETE FROM recipe_ingredients
+        $query2 = 'DELETE FROM ingredients
                 WHERE recipe_id = :id';
         $statement = $db->prepare($query2);
         $statement->bindParam(':id',$id, PDO::PARAM_INT);
@@ -305,9 +305,9 @@ function random_recipe($db){
 
 function search_recipe($db, $search_term){
     $sql = 'SELECT distinct(recipe.title), recipe.recipe_id
-            FROM recipe INNER JOIN recipe_ingredients
-            ON recipe.recipe_id = recipe_ingredients.recipe_id
-            WHERE recipe.title LIKE :search OR recipe_ingredients.ingredient LIKE :search';
+            FROM recipe INNER JOIN ingredients
+            ON recipe.recipe_id = ingredients.recipe_id
+            WHERE recipe.title LIKE :search OR ingredients.ingredient LIKE :search';
     try{
         $statement = $db->prepare($sql);
         //No quotes needed in LIKE statement because of PDO::PARAM_STR
