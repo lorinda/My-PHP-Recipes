@@ -1,7 +1,7 @@
 <?php
-$pageTitle = "My Meals";
+//To mark navigation option 'active'
 $home = 'selected';
-include 'inc/header.php';
+require 'inc/header.php';
 ?>
 
 <div class="jumbotron well">
@@ -55,4 +55,4 @@ include 'inc/header.php';
     </div>
 </div>    
 
-<?php include 'inc/footer.php'; ?>
+<?php require 'inc/footer.php'; ?>
