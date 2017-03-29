@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="jumbotron well">
     <form method="post" action="">
         <input type="text" name="search" id="search" />
-        <input type="submit" value="Search">
+        <input type="submit" class="btn" value="Search">
     </form>
 </div>
 

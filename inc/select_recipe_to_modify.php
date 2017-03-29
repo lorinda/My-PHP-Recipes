@@ -25,7 +25,7 @@
                         options[document.form.selectRecipe.selectedIndex].value
                         }
                     </script>
-                    <input type="submit" name="findRecipe" value="Load" onclick="go()" />
+                    <input type="submit" name="findRecipe" value="Load" class="btn" onclick="go()" />
                 </form>
             </div> <!--End "col-md-4" -->
         </div><!--End "row" -->

@@ -30,7 +30,7 @@
                         options[document.form.selectRecipe.selectedIndex].value
                         }
                     </script>
-                    <input type="submit" name="findRecipe" value="Load" />
+                    <input type="submit" name="findRecipe" class="btn" value="Load" />
                 </form>
             </div> <!--End "col-md-4" -->
         </div><!--End "row" -->
