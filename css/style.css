@@ -31,7 +31,6 @@ th {
 .instructions{
     border: 1px;
     background: yellow;
-    width: 50%;
 }
 
 .button--delete{
@@ -56,3 +55,5 @@ footer {
 .blueapron{
     color: grey;
 }
+
+@media query
