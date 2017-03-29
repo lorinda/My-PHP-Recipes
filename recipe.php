@@ -1,34 +1,35 @@
 <?php
+//To mark navigation option 'active'
 $view_recipe = 'selected';
-include 'inc/functions.php';
-include 'inc/connection.php';
+require 'inc/functions.php';
+require 'inc/connection.php';
 
+//If id in url is in database
 if(isset($_GET['id']) && is_id_valid($db, $_GET['id'])){
     $id = $_GET['id'];
+        //Get recipe title and subtitle from database
         if(get_title($db, $id)){
             $recipeTitle = get_title($db, $id);
             $subTitle = get_subtitle($db, $id);    
         }else{
             $id='';
-        }
-        
-            
+        }            
 }else{
     $id = '';
-    //display main recipe page
 }
-include 'inc/header.php';
+
+require 'inc/header.php';
 
 ?>
 <?php
 if(isset($_GET['id']) && is_id_valid($db, $id)){
 //display recipe for id
-    include 'inc/view_chosen_recipe.php';
+    require 'inc/view_chosen_recipe.php';
 }
 else{  
 //display selector page for recipes
-    include 'inc/select_recipe_to_view.php';
+    require 'inc/select_recipe_to_view.php';
 } 
 ?>
 
-<?php include 'inc/footer.php'; ?>
+<?php require 'inc/footer.php'; ?>
