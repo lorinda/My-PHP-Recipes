@@ -12,7 +12,7 @@
                 ?>
                 <form name="form" method="post" action='<?php echo "recipe.php?id=".$topRecipeInForm[0]['recipe_id']; ?>'>
                     <label for="selectRecipe">Choose a Recipe:</label>
-                    <select name="selectRecipe" id="selectRecipe" onChange="go()">
+                    <select name="selectRecipe" id="selectRecipe" class="form-control" onChange="go()">
                         <?php
                         foreach($allRecipes as $item){
                             echo "<option value='recipe.php?id=";

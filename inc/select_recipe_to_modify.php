@@ -7,7 +7,7 @@
                 <?php $allRecipes = get_all_recipe_titles($db); ?>
                 <form name="form" class="">
                     <label for="selectRecipe">Choose a Recipe:</label>
-                    <select name="selectRecipe" id="selectRecipe" onChange="go()">
+                    <select name="selectRecipe" id="selectRecipe" class="form-control" onChange="go()">
                          <option selected disabled>Choose here</option>
                         <?php asort($allRecipes);
                         foreach($allRecipes as $item){
