@@ -1,3 +1,4 @@
+<!-- Display Add Ingredient Form -->
 <div class="jumbotron well">
     <h1>Add Ingredient</h1>
     <form class="form-horizontal" action="" method="post">
@@ -35,5 +36,5 @@
 </div>
 
 <?php
-include 'inc/footer.php';    
+require 'inc/footer.php';    
 ?>
