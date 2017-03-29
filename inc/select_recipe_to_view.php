@@ -50,7 +50,3 @@
         </div><!--End "row" -->
     </div><!-- End "container" -->
 </div><!-- End "jumbotron well" -->
-
-
-
-<?php include 'inc/footer.php'; ?>
