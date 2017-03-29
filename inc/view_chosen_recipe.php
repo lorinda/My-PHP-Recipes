@@ -55,6 +55,3 @@
         <br>
     </div><!-- End Recipe div -->
 </div><!-- End Jumbotron Well div -->
-
-
-<?php include 'inc/footer.php'; ?>
