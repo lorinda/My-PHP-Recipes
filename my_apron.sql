@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2017 at 05:09 PM
+-- Generation Time: Mar 29, 2017 at 01:29 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -23,64 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recipe`
+-- Table structure for table `ingredients`
 --
 
-CREATE TABLE `recipe` (
-  `recipe_id` int(4) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `subtitle` varchar(255) NOT NULL,
-  `cooked_on` varchar(10) NOT NULL,
-  `img_src` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `recipe`
---
-
-INSERT INTO `recipe` (`recipe_id`, `title`, `subtitle`, `cooked_on`, `img_src`, `url`) VALUES
-(1, 'Creamy Shrimp Spaghetti', 'with Broccoli & Meyer Lemon', '02/02/2017', 'NULL', 'https://www.blueapron.com/recipes/creamy-shrimp-spaghetti-with-broccoli-meyer-lemon'),
-(2, 'Sunchoke & Egg Noodle Casserole', 'with Kale & Mornay Sauce', '02/04/2017', '/images/sunchoke_egg_noodle_02042017.jpg', 'https://www.blueapron.com/recipes/sunchoke-egg-noodle-casserole-with-kale-gouda-mornay-sauce'),
-(3, 'Tempura Fried Cod', 'with Thai-Style Vegetable Salad & Jasmine Rice', '2/26/2017', '/images/tempura_fried_cod_02262017.jpg', 'https://www.blueapron.com/recipes/tempura-fried-cod-with-thai-style-vegetable-salad-jasmine-rice'),
-(55, 'Baked Whole Wheat Rigatoni', 'With Cone Cabbage & Sage', '10/13/2016', '/images/baked_whole_wheat_rigatoni.jpg', 'https://www.blueapron.com/recipes/baked-whole-wheat-rigatoni-with-cone-cabbage-sage'),
-(54, 'Seared Salmon & Fall Vegetables', 'With Apple-Brown Butter Vinaigrette', '10/18/2016', '/images/seared_salmon_fall_vegetables.jpg', 'https://www.blueapron.com/recipes/seared-salmon-fall-vegetable-hash-with-apple-brown-butter-dressing'),
-(49, 'Harissa Chicken Skewers', 'With Khorasan Wheat & Persimmon Salad', '12/8/2016', 'NULL', 'https://www.blueapron.com/recipes/harissa-chicken-skewers-with-kamut-persimmon-salad'),
-(50, 'Spicy Shrimp & Bucatini Pasta', 'With Kale', '12/08/2016', '/images/spicy_shrimp_bucatini_pasta.jpg', 'https://www.blueapron.com/recipes/spicy-shrimp-linguine-pasta-with-garlic-chives-kale'),
-(51, 'Mushroom & Fennel Fettuccine', 'With Hakurei Turnips & Mascarpone Cheese', '11/03/2016', '/images/mushroom_fennel_fettuccine.jpg', 'https://www.blueapron.com/recipes/mushroom-fennel-fettuccine-with-tokyo-turnips-mascarpone-cheese'),
-(52, 'Crispy Catfish', 'With Yellow Curry & Bird&#39;s Eye Chile Sauce', '11/01/2016', '/images/crispy_catfish.jpg', 'https://www.blueapron.com/recipes/crispy-catfish-with-yellow-curry-bird-s-eye-chile-sauce'),
-(39, 'Lamb, Beef & Mushroom Stew', 'with Parmesan Potatoes & Chives', '03/05/2017', '/images/lamb_beef_mushroom_stew.jpg', 'https://www.blueapron.com/recipes/lamb-beef-mushroom-stew-with-parmesan-potatoes-chives'),
-(40, 'Pork Chops & Freekeh Salad', 'with Brussels Sprouts & Clementine Chutney', '01/15/2017', '/images/pork_chops_freekah_salad.jpg', 'https://www.blueapron.com/recipes/seared-pork-chops-with-freekeh-salad-clementine-chutney'),
-(48, 'Seared Chicken & Pearl Couscous', 'With Crispy Capers & Blood Orange Souce', '03/11/2017', '/images/seared_chicken_pearl_couscous.jpg', 'https://www.blueapron.com/recipes/seared-chicken-pearl-couscous-with-crispy-capers-blood-orange-sauce'),
-(53, 'Spicy Butternut Squash Empanadas', 'With Green Tomato Salsa & Lime Crema', '10/28/2016', '/images/spicy_butternut_squash_empanadas.jpg', 'https://www.blueapron.com/recipes/spicy-butternut-squash-empanadas-with-green-tomato-salsa-lime-crema'),
-(56, 'Curried Catfish & Coconut Rice', 'With Green Beans & Golden Raisin Chutney', '08/15/2016', '/images/curried_catfish_coconut_rice.jpg', 'https://www.blueapron.com/recipes/curried-catfish-coconut-rice-with-purple-beans-golden-raisin-chutney'),
-(57, 'Brown Butter Cod', 'With Corn, Shishito Peppers & Purple Potatoes', '08/10/2016', '/images/brown_butter_cod.jpg', 'https://www.blueapron.com/recipes/brown-butter-cod-with-corn-shishito-peppers-purple-potatoes'),
-(58, 'Seared Pork Chops & Plum Salsa', 'With Corn, Kale & Farro Salad', '08/07/2016', '/images/seared_pork_chops_plum_salsa.jpg', 'https://www.blueapron.com/recipes/seared-pork-chops-summer-stone-fruit-with-warm-farro-kale-corn-salad'),
-(59, 'Grilled Brie Cheese & Strawberry Jam Sandwiches', 'With Arugula & Walnut Salad', '05/25/2016', '/images/grilled_brie_cheese_strawberry_jam_sandwiches.jpg', 'https://www.blueapron.com/recipes/grilled-brie-cheese-strawberry-jam-sandwiches-with-arugula-walnut-salad'),
-(60, 'Mushroom & Goat Cheese Quiches', 'With Arugula Salad & Pink Lemon Vinaigrette', '03/19/2017', '/images/mushroom_goat_cheese_quiches.jpg', 'https://www.blueapron.com/recipes/mushroom-goat-cheese-quiches-with-arugula-salad-pink-lemon-vinaigrette'),
-(80, 'Spring Chicken Fettuccine', 'With Sauteed Asparagus, Kale & Rosemary', '05/10/2016', '/images/spring_chicken_fettuccine.jpg', 'https://www.blueapron.com/recipes/spring-chicken-fettuccine-with-sauteed-asparagus-kale-rosemary'),
-(81, 'Zucchini & Parmesan Quiches', 'With Red Leaf Lettuce Salad & Pink Lemon Vinagrette', '05/07/2016', '/images/zucchini_parmesan_quiches.jpg', 'https://www.blueapron.com/recipes/zucchini-parmesan-quiches-with-red-leaf-lettuce-salad-pink-lemon-vinaigrette'),
-(83, 'Sumac-Spiced Salmon & Labneh', 'With Freekeh, Kale & Almond Salad', '04/10/2016', '/images/sumac-spiced_salmon_labneh.jpg', 'https://www.blueapron.com/recipes/sumac-spiced-salmon-labneh-with-freekeh-kale-almond-salad'),
-(82, 'Alsatian Spiced Chicken', 'With Smashed Potatoes & Glazed Red Cabbage', '04/27/2016', '/images/alsatian_spiced_chicken.jpg', 'https://www.blueapron.com/recipes/alsatian-spiced-chicken-with-smashed-potatoes-glazed-red-cabbage'),
-(84, 'Mushroom & Collard Green Calzones', 'With Fresh Mozzarella & Tomato Dipping Sauce', '04/14/2016', '/images/mushroom_collard_green_calzones.jpg', 'https://www.blueapron.com/recipes/mushroom-swiss-chard-calzones-with-fresh-mozzarella-tomato-dipping-sauce'),
-(85, 'English Pea & Goat Cheese Quiches', 'With Pea Shoot & Shaved Parmesan Salad', '04/06/2016', '/images/english_pea_goat_cheese_quiches.jpg', 'https://www.blueapron.com/recipes/english-pea-goat-cheese-quiches-with-pea-shoot-shaved-parmesan-salad'),
-(86, 'Steaks Au Poivre', 'With Crispy Fingerling Potatoes & Sauteed Kale', '04/02/2016', '/images/steaks_au_poivre.jpg', 'https://www.blueapron.com/recipes/steak-au-poivre-with-crispy-fingerling-potatoes-sauteed-kale'),
-(87, 'Seared Salmon & Spinach-Walnut Pesto', 'With Purple Potato & Red Onion Hash', '03/23/2016', '/images/seared_salmon_spinach-walnut_pesto.jpg', 'https://www.blueapron.com/recipes/seared-salmon-spinach-walnut-pesto-with-purple-potato-red-onion-hash'),
-(88, 'Trinidadian Chicken Curry', 'With Coconut Grits & Collard Greens', '03/09/2016', '/images/trinidadian_chicken_curry.jpg', 'https://www.blueapron.com/recipes/trinidadian-chicken-curry-with-coconut-grits-collard-greens'),
-(89, 'Spicy Shrimp Spaghetti', 'With Cabbage & Toasted Breadcrumbs', '03/07/2016', '/images/spicy_shrimp_spaghetti.jpg', 'https://www.blueapron.com/recipes/spicy-shrimp-spaghetti-with-cabbage-toasted-breadcrumbs'),
-(90, 'Fresh Beet Linguine', 'With Goat Cheese, Swiss Chard & Toasted Walnuts', '02/28/2016', '/images/fresh_beet_linguine.jpg', 'https://www.blueapron.com/recipes/fresh-beet-linguine-with-goat-cheese-swiss-chard-toasted-walnuts'),
-(91, 'Shiitake Mushroom & Cabbage Dumplings', 'With Garlic-Roasted Tatsoi', '02/16/2016', '/images/shiitake_mushroom_cabbage_dumplings.jpg', 'https://www.blueapron.com/recipes/shiitake-mushroom-cabbage-dumplings-with-garlic-roasted-tatsoi'),
-(92, 'Shrimp & Pineapple Fried Rice', 'With Toasted Cashews & Sambal Oelek', '02/01/2016', '/images/shrimp_pineapple_fried_rice.jpg', 'https://www.blueapron.com/recipes/shrimp-pineapple-fried-rice-with-cashews-chili-jam'),
-(93, 'Chicken Meatballs & Creamy Polenta', 'With Tomato Sugo $ Lacinato Kale', '01/29/2016', '/images/chicken_meatballs_creamy_polenta.jpg', 'https://www.blueapron.com/recipes/chicken-meatballs-creamy-polenta-with-tomato-sugo-lacinato-kale'),
-(94, 'Roast Pork', 'With Sauteed Spinach & Olive Smashed Potatoes', '01/22/2016', '/images/roast_pork.jpg', 'https://www.blueapron.com/recipes/seared-pork-roast-with-smashed-potatoes-strawberry-rhubarb-compote');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `recipe_ingredients`
---
-
-CREATE TABLE `recipe_ingredients` (
+CREATE TABLE `ingredients` (
   `id` int(4) NOT NULL,
   `recipe_id` int(4) NOT NULL,
   `ingredient` varchar(40) NOT NULL,
@@ -89,10 +35,10 @@ CREATE TABLE `recipe_ingredients` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `recipe_ingredients`
+-- Dumping data for table `ingredients`
 --
 
-INSERT INTO `recipe_ingredients` (`id`, `recipe_id`, `ingredient`, `amount`, `measurement`) VALUES
+INSERT INTO `ingredients` (`id`, `recipe_id`, `ingredient`, `amount`, `measurement`) VALUES
 (1, 1, 'Shrimp', '10', 'oz'),
 (2, 1, 'Spaghetti', '6', 'oz'),
 (3, 1, 'Garlic', '3', 'cloves'),
@@ -179,7 +125,7 @@ INSERT INTO `recipe_ingredients` (`id`, `recipe_id`, `ingredient`, `amount`, `me
 (105, 52, 'Jasmine Rice', '1/2', 'cup'),
 (106, 52, 'Lime', '1', ''),
 (107, 52, 'Kale', '1/2', 'bunch'),
-(108, 52, 'Rice Flour', '3', 'tbp'),
+(354, 52, 'Rice Flour', '3', 'tbsp'),
 (109, 52, 'Yellow Curry Paste', '1 1/2', 'tbsp'),
 (110, 52, 'Ginger', '1', '1-inch piece'),
 (111, 52, 'Bird&#39;s Eye Chile', '1', ''),
@@ -407,11 +353,84 @@ INSERT INTO `recipe_ingredients` (`id`, `recipe_id`, `ingredient`, `amount`, `me
 (346, 94, 'Spinach', '1/2', 'lb'),
 (347, 94, 'Garlic Chives', '1/2', 'Bunch'),
 (348, 94, 'Castelvetrano Olives', '1', 'oz'),
-(349, 94, 'Sour Cream', '1/4', 'Cup');
+(349, 94, 'Sour Cream', '1/4', 'Cup'),
+(361, 101, 'Baby Greens', '2', 'oz'),
+(360, 101, 'Cod Fillets', '2', ''),
+(362, 101, 'Garlic', '2', 'Cloves'),
+(363, 101, 'Pink Lemon', '1', ''),
+(364, 101, 'Russet Potatoes', '1', 'lb'),
+(365, 101, 'Shallot', '1', ''),
+(366, 101, 'Roasted Almonds', '3', 'tbsp'),
+(367, 101, 'Red Wine Vinegar', '2', 'tbsp'),
+(368, 101, 'Smoky Cod Spice Blend', '1 1/2', 'tbsp'),
+(369, 101, 'Sugar', '1', 'tbsp'),
+(370, 101, 'Deglet Noor Dates', '1/2', 'oz'),
+(371, 101, 'Butter', '2', 'tbsp');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recipe`
+--
+
+CREATE TABLE `recipe` (
+  `recipe_id` int(4) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `subtitle` varchar(255) NOT NULL,
+  `cooked_on` varchar(10) NOT NULL,
+  `img_src` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `recipe`
+--
+
+INSERT INTO `recipe` (`recipe_id`, `title`, `subtitle`, `cooked_on`, `img_src`, `url`) VALUES
+(1, 'Creamy Shrimp Spaghetti', 'with Broccoli & Meyer Lemon', '02/02/2017', 'NULL', 'https://www.blueapron.com/recipes/creamy-shrimp-spaghetti-with-broccoli-meyer-lemon'),
+(2, 'Sunchoke & Egg Noodle Casserole', 'with Kale & Mornay Sauce', '02/04/2017', '/images/sunchoke_egg_noodle_02042017.jpg', 'https://www.blueapron.com/recipes/sunchoke-egg-noodle-casserole-with-kale-gouda-mornay-sauce'),
+(3, 'Tempura Fried Cod', 'with Thai-Style Vegetable Salad & Jasmine Rice', '2/26/2017', '/images/tempura_fried_cod_02262017.jpg', 'https://www.blueapron.com/recipes/tempura-fried-cod-with-thai-style-vegetable-salad-jasmine-rice'),
+(55, 'Baked Whole Wheat Rigatoni', 'With Cone Cabbage & Sage', '10/13/2016', '/images/baked_whole_wheat_rigatoni.jpg', 'https://www.blueapron.com/recipes/baked-whole-wheat-rigatoni-with-cone-cabbage-sage'),
+(54, 'Seared Salmon & Fall Vegetables', 'With Apple-Brown Butter Vinaigrette', '10/18/2016', '/images/seared_salmon_fall_vegetables.jpg', 'https://www.blueapron.com/recipes/seared-salmon-fall-vegetable-hash-with-apple-brown-butter-dressing'),
+(49, 'Harissa Chicken Skewers', 'With Khorasan Wheat & Persimmon Salad', '12/8/2016', 'NULL', 'https://www.blueapron.com/recipes/harissa-chicken-skewers-with-kamut-persimmon-salad'),
+(50, 'Spicy Shrimp & Bucatini Pasta', 'With Kale', '12/08/2016', '/images/spicy_shrimp_bucatini_pasta.jpg', 'https://www.blueapron.com/recipes/spicy-shrimp-linguine-pasta-with-garlic-chives-kale'),
+(51, 'Mushroom & Fennel Fettuccine', 'With Hakurei Turnips & Mascarpone Cheese', '11/03/2016', '/images/mushroom_fennel_fettuccine.jpg', 'https://www.blueapron.com/recipes/mushroom-fennel-fettuccine-with-tokyo-turnips-mascarpone-cheese'),
+(52, 'Crispy Catfish', 'With Yellow Curry & Bird&#39;s Eye Chile Sauce', '11/01/2016', '/images/crispy_catfish.jpg', 'https://www.blueapron.com/recipes/crispy-catfish-with-yellow-curry-bird-s-eye-chile-sauce'),
+(39, 'Lamb, Beef & Mushroom Stew', 'with Parmesan Potatoes & Chives', '03/05/2017', '/images/lamb_beef_mushroom_stew.jpg', 'https://www.blueapron.com/recipes/lamb-beef-mushroom-stew-with-parmesan-potatoes-chives'),
+(40, 'Pork Chops & Freekeh Salad', 'with Brussels Sprouts & Clementine Chutney', '01/15/2017', '/images/pork_chops_freekah_salad.jpg', 'https://www.blueapron.com/recipes/seared-pork-chops-with-freekeh-salad-clementine-chutney'),
+(48, 'Seared Chicken & Pearl Couscous', 'With Crispy Capers & Blood Orange Souce', '03/11/2017', '/images/seared_chicken_pearl_couscous.jpg', 'https://www.blueapron.com/recipes/seared-chicken-pearl-couscous-with-crispy-capers-blood-orange-sauce'),
+(53, 'Spicy Butternut Squash Empanadas', 'With Green Tomato Salsa & Lime Crema', '10/28/2016', '/images/spicy_butternut_squash_empanadas.jpg', 'https://www.blueapron.com/recipes/spicy-butternut-squash-empanadas-with-green-tomato-salsa-lime-crema'),
+(56, 'Curried Catfish & Coconut Rice', 'With Green Beans & Golden Raisin Chutney', '08/15/2016', '/images/curried_catfish_coconut_rice.jpg', 'https://www.blueapron.com/recipes/curried-catfish-coconut-rice-with-purple-beans-golden-raisin-chutney'),
+(57, 'Brown Butter Cod', 'With Corn, Shishito Peppers & Purple Potatoes', '08/10/2016', '/images/brown_butter_cod.jpg', 'https://www.blueapron.com/recipes/brown-butter-cod-with-corn-shishito-peppers-purple-potatoes'),
+(58, 'Seared Pork Chops & Plum Salsa', 'With Corn, Kale & Farro Salad', '08/07/2016', '/images/seared_pork_chops_plum_salsa.jpg', 'https://www.blueapron.com/recipes/seared-pork-chops-summer-stone-fruit-with-warm-farro-kale-corn-salad'),
+(59, 'Grilled Brie Cheese & Strawberry Jam Sandwiches', 'With Arugula & Walnut Salad', '05/25/2016', '/images/grilled_brie_cheese_strawberry_jam_sandwiches.jpg', 'https://www.blueapron.com/recipes/grilled-brie-cheese-strawberry-jam-sandwiches-with-arugula-walnut-salad'),
+(60, 'Mushroom & Goat Cheese Quiches', 'With Arugula Salad & Pink Lemon Vinaigrette', '03/19/2017', '/images/mushroom_goat_cheese_quiches.jpg', 'https://www.blueapron.com/recipes/mushroom-goat-cheese-quiches-with-arugula-salad-pink-lemon-vinaigrette'),
+(80, 'Spring Chicken Fettuccine', 'With Sauteed Asparagus, Kale & Rosemary', '05/10/2016', '/images/spring_chicken_fettuccine.jpg', 'https://www.blueapron.com/recipes/spring-chicken-fettuccine-with-sauteed-asparagus-kale-rosemary'),
+(81, 'Zucchini & Parmesan Quiches', 'With Red Leaf Lettuce Salad & Pink Lemon Vinagrette', '05/07/2016', '/images/zucchini_parmesan_quiches.jpg', 'https://www.blueapron.com/recipes/zucchini-parmesan-quiches-with-red-leaf-lettuce-salad-pink-lemon-vinaigrette'),
+(83, 'Sumac-Spiced Salmon & Labneh', 'With Freekeh, Kale & Almond Salad', '04/10/2016', '/images/sumac-spiced_salmon_labneh.jpg', 'https://www.blueapron.com/recipes/sumac-spiced-salmon-labneh-with-freekeh-kale-almond-salad'),
+(82, 'Alsatian Spiced Chicken', 'With Smashed Potatoes & Glazed Red Cabbage', '04/27/2016', '/images/alsatian_spiced_chicken.jpg', 'https://www.blueapron.com/recipes/alsatian-spiced-chicken-with-smashed-potatoes-glazed-red-cabbage'),
+(84, 'Mushroom & Collard Green Calzones', 'With Fresh Mozzarella & Tomato Dipping Sauce', '04/14/2016', '/images/mushroom_collard_green_calzones.jpg', 'https://www.blueapron.com/recipes/mushroom-swiss-chard-calzones-with-fresh-mozzarella-tomato-dipping-sauce'),
+(85, 'English Pea & Goat Cheese Quiches', 'With Pea Shoot & Shaved Parmesan Salad', '04/06/2016', '/images/english_pea_goat_cheese_quiches.jpg', 'https://www.blueapron.com/recipes/english-pea-goat-cheese-quiches-with-pea-shoot-shaved-parmesan-salad'),
+(86, 'Steaks Au Poivre', 'With Crispy Fingerling Potatoes & Sauteed Kale', '04/02/2016', '/images/steaks_au_poivre.jpg', 'https://www.blueapron.com/recipes/steak-au-poivre-with-crispy-fingerling-potatoes-sauteed-kale'),
+(87, 'Seared Salmon & Spinach-Walnut Pesto', 'With Purple Potato & Red Onion Hash', '03/23/2016', '/images/seared_salmon_spinach-walnut_pesto.jpg', 'https://www.blueapron.com/recipes/seared-salmon-spinach-walnut-pesto-with-purple-potato-red-onion-hash'),
+(88, 'Trinidadian Chicken Curry', 'With Coconut Grits & Collard Greens', '03/09/2016', '/images/trinidadian_chicken_curry.jpg', 'https://www.blueapron.com/recipes/trinidadian-chicken-curry-with-coconut-grits-collard-greens'),
+(89, 'Spicy Shrimp Spaghetti', 'With Cabbage & Toasted Breadcrumbs', '03/07/2016', '/images/spicy_shrimp_spaghetti.jpg', 'https://www.blueapron.com/recipes/spicy-shrimp-spaghetti-with-cabbage-toasted-breadcrumbs'),
+(90, 'Fresh Beet Linguine', 'With Goat Cheese, Swiss Chard & Toasted Walnuts', '02/28/2016', '/images/fresh_beet_linguine.jpg', 'https://www.blueapron.com/recipes/fresh-beet-linguine-with-goat-cheese-swiss-chard-toasted-walnuts'),
+(91, 'Shiitake Mushroom & Cabbage Dumplings', 'With Garlic-Roasted Tatsoi', '02/16/2016', '/images/shiitake_mushroom_cabbage_dumplings.jpg', 'https://www.blueapron.com/recipes/shiitake-mushroom-cabbage-dumplings-with-garlic-roasted-tatsoi'),
+(92, 'Shrimp & Pineapple Fried Rice', 'With Toasted Cashews & Sambal Oelek', '02/01/2016', '/images/shrimp_pineapple_fried_rice.jpg', 'https://www.blueapron.com/recipes/shrimp-pineapple-fried-rice-with-cashews-chili-jam'),
+(93, 'Chicken Meatballs & Creamy Polenta', 'With Tomato Sugo $ Lacinato Kale', '01/29/2016', '/images/chicken_meatballs_creamy_polenta.jpg', 'https://www.blueapron.com/recipes/chicken-meatballs-creamy-polenta-with-tomato-sugo-lacinato-kale'),
+(94, 'Roast Pork', 'With Sauteed Spinach & Olive Smashed Potatoes', '01/22/2016', '/images/roast_pork.jpg', 'https://www.blueapron.com/recipes/seared-pork-roast-with-smashed-potatoes-strawberry-rhubarb-compote'),
+(101, 'Smoky Seared Cod', 'With Roasted Potatoes & Dates', '03/27/2017', '/images/smoky_seared_cod.jpg', 'https://www.blueapron.com/recipes/smoky-seared-cod-with-roasted-potato-dates');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ingredients`
+--
+ALTER TABLE `ingredients`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `recipe`
@@ -420,25 +439,19 @@ ALTER TABLE `recipe`
   ADD PRIMARY KEY (`recipe_id`);
 
 --
--- Indexes for table `recipe_ingredients`
---
-ALTER TABLE `recipe_ingredients`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `ingredients`
+--
+ALTER TABLE `ingredients`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=373;
+--
 -- AUTO_INCREMENT for table `recipe`
 --
 ALTER TABLE `recipe`
-  MODIFY `recipe_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
---
--- AUTO_INCREMENT for table `recipe_ingredients`
---
-ALTER TABLE `recipe_ingredients`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
+  MODIFY `recipe_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
