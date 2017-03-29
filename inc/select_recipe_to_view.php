@@ -43,7 +43,7 @@
                     echo "<div class='col-md-4'>";
                     echo "<a href='recipe.php?id=".$item['recipe_id']."'>";
                     echo "<img src='".$item['img_src']."' alt='Image of Random Recipe' class='img-responsive'>";
-                    echo "</a></div><br>";
+                    echo "</a><br></div>";
                 }
                 ?>							
             </ul>
