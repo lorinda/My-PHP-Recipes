@@ -1,26 +1,35 @@
 <?php
+//To mark navigation option 'active'
 $search_page = 'selected';
-include 'inc/header.php';
-include 'inc/connection.php';
-include 'inc/functions.php';
 
+require 'inc/header.php';
+require 'inc/connection.php';
+require 'inc/functions.php';
+
+//If search form submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $search = trim(filter_input(INPUT_POST,'search',FILTER_SANITIZE_STRING));
+    //Add like wildcard for SQL
     $search_term = '%'.$search.'%';
 }
 ?>
+<!--Add another search form-->
 <div class="jumbotron well">
     <form method="post" action="">
         <input type="text" name="search" id="search" />
         <input type="submit" value="Search">
     </form>
 </div>
+
 <?php
+//If search form submitted, display this:
 if ($_SERVER["REQUEST_METHOD"]  == "POST"){
 ?>    
 <div class="jumbotron well">
     <h1>Search Results</h1>
-    <h3>For "<?php echo $search; ?>"</h3></3>
+    <h3>For "<?php echo $search; ?>"</h3>
+    
+    <!-- Search the database for the term, display results-->
     <?php $searchRecipes = search_recipe($db,$search_term); ?>
         <?php
             $i=1;
@@ -30,10 +39,7 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST"){
                 $i++;
             }
         ?>
-    <div class="description">
-        
-    </div>
 </div>    
 <?php } ?>
 
-<?php include 'inc/footer.php'; ?>
+<?php require 'inc/footer.php'; ?>
