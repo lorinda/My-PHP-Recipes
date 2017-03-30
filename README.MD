@@ -1,15 +1,14 @@
 # My PHP Recipes
-This project explores learning PHP and MySQL by creating a database for meals I have cooked. 
-Recipe ingredients are saved and searchable. Actual steps for the recipe are not included but accessible through the linked official recipe listing on blueapron.com.
+My Code Louisville project explores learning PHP and MySQL by creating a web app for storing and retrieving meals cooked through Blue Apron's subscription service. Recipe ingredients are saved and searchable. Actual steps for each recipe are not included but accessible through the linked official recipe listing on blueapron.com.
 
 ## Installation
 1. Install local server.
 2. Clone Repo to web root.
 3. Import my_apron.sql to phpmyadmin
-    (Database name: my_apron)
+    (Database name: my_apron, Table names: recipe, ingredients)
 4. Update inc/connection.php
     * 4a. Delete line 2: ```require '/private/database-access.php';```
-    * 4b. Change Line 5 for local database connection parameters.
+    * 4b. Change Line 5 to your local database connection parameters.
 5. View site at index.php.
 
 ## Usage
