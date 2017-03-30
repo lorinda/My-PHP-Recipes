@@ -3,6 +3,11 @@ html {
     min-height: 100%;
 }
 
+.navbar-brand {
+    font-family: fantasy;
+    font-size: 2em;
+}
+
 body {
     margin: 0 0 100px; /* bottom = footer height */
     background: url(../images/bg-body.jpg) repeat;
@@ -13,6 +18,7 @@ body {
 }
 
 h1, h2{
+    font-family: fantasy;
     text-align: center;
 }
 
