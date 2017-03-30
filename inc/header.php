@@ -11,12 +11,14 @@ $siteTitle = 'My Meals';
 
     	<!-- Bootstrap 3.3.7 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!--Google Font: Changa -->
+        <link href="https://fonts.googleapis.com/css?family=Changa" rel="stylesheet">
         <link rel="stylesheet" href="../css/style.css">
         <title><?php echo $siteTitle; ?></title>
     </head>
     <body>
         <header>
-	        <nav class="navbar navbar-default">
+            <nav class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<div class="navbar-header">
 				    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
