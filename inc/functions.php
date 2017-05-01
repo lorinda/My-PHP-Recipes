@@ -287,7 +287,7 @@ function get_last_id($db){
 }
 
 function random_recipe($db){
-    $sql = 'SELECT recipe_id, img_src
+    $sql = 'SELECT recipe_id, img_src, title
                 FROM recipe
                 WHERE img_src NOT IN("/images/image.jpg","/images/","NULL")
                 ORDER BY RAND()
