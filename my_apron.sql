@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2017 at 01:29 AM
+-- Generation Time: May 01, 2017 at 01:23 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -365,7 +365,72 @@ INSERT INTO `ingredients` (`id`, `recipe_id`, `ingredient`, `amount`, `measureme
 (368, 101, 'Smoky Cod Spice Blend', '1 1/2', 'tbsp'),
 (369, 101, 'Sugar', '1', 'tbsp'),
 (370, 101, 'Deglet Noor Dates', '1/2', 'oz'),
-(371, 101, 'Butter', '2', 'tbsp');
+(371, 101, 'Butter', '2', 'tbsp'),
+(380, 117, 'Penne Rigate Pasta', '1/2', 'lb'),
+(381, 117, 'Whole Peeled Tomatoes', '1', '14-oz can'),
+(382, 117, 'Fresh Mozzarella Cheese', '4', 'oz'),
+(383, 117, 'Garlic', '2', 'Cloves'),
+(384, 117, 'Carrots', '2', ''),
+(385, 117, 'Tangelo', '1', ''),
+(386, 117, 'Castelvetrano Olives', '1', 'oz'),
+(387, 117, 'Grated Parmesan Cheese', '1/4', 'Cup'),
+(388, 117, 'Crushed Red Pepper Flakes', '1/4', 'tsp'),
+(389, 118, 'Skin-on Salmon Fillets', '2', ''),
+(390, 118, 'Cracked Freekah', '1/2', 'Cup'),
+(391, 118, 'Garlic', '3', 'Cloves'),
+(392, 118, 'Lemon', '1', ''),
+(393, 118, 'Kale', '1', 'Bunch'),
+(394, 118, 'Medjool Dates', '1', 'oz'),
+(395, 118, 'Labneh Cheese', '1/4', 'Cup'),
+(396, 119, 'Plain Pizza Dough', '1', 'lb'),
+(397, 119, 'Tomato Sauce', '1', '8-oz can'),
+(398, 119, 'Oregano', '1', 'Bunch'),
+(399, 119, 'Garlic', '2', 'Cloves'),
+(400, 119, 'Green Bell Pepper', '1', ''),
+(401, 119, 'Spinach', '3/4', 'lb'),
+(402, 119, 'Fresh Mozzarella Cheese', '4', 'oz'),
+(403, 119, 'Shallot', '1', ''),
+(404, 119, 'Ricotta Salata Cheese', '2', 'oz'),
+(405, 119, 'Crushed Red Pepper Flakes', '1/4', 'tsp'),
+(406, 119, 'Grated Parmesan Cheese', '2', 'tbsp'),
+(407, 119, 'Black Cerignola Olives', '1', 'oz'),
+(408, 120, 'Chicken', '1', 'Half'),
+(409, 120, 'Carrots', '6', ''),
+(410, 120, 'Garlic', '3', 'Cloves'),
+(411, 120, 'Yukon Gold Potatoes', '2', ''),
+(412, 120, 'White Wine Vinegar', '1', 'tbsp'),
+(413, 120, 'Italian Dressing Spice Blend', '1 1/2', 'tsp'),
+(414, 121, 'Chickpeas', '1 1/2', 'Cups'),
+(415, 121, 'Scallions', '2', ''),
+(416, 121, 'Swiss Chard', '1', 'Bunch'),
+(417, 121, 'Garlic', '1', 'Clove'),
+(418, 121, 'Pixie Mandarin', '1', ''),
+(419, 121, 'Yukon Gold Potatoes', '3', ''),
+(420, 121, 'Mayonnaise', '3', 'tbsp'),
+(421, 121, 'Roasted Almonds', '2', 'tbsp'),
+(422, 121, 'Tomato Paste', '2', 'tbsp'),
+(423, 121, 'Chickpea Stew Spice Blend', '2', 'tsp'),
+(424, 122, 'Ground Pork', '10', 'oz'),
+(425, 122, 'Spaghetti', '5', 'oz'),
+(426, 122, 'Tomato Sauce', '1', '8-oz can'),
+(427, 122, 'Radishes', '3', ''),
+(428, 122, 'Butter Lettuce', '1', 'Head'),
+(429, 122, 'Carrot', '1', ''),
+(430, 122, 'Garlic', '3', 'Cloves'),
+(431, 122, 'Fromage Blanc', '2', 'tbsp'),
+(432, 122, 'Red Wine Vinegar', '1', 'tbsp'),
+(433, 122, 'Shallot', '1', ''),
+(434, 122, 'Bolognese Spice Blend', '1', 'tbsp'),
+(435, 123, 'Boneless, Skinless Chicken Breasts', '2', ''),
+(436, 123, 'Pearl Couscous', '1', 'Cup'),
+(437, 123, 'Garlic', '3', 'Cloves'),
+(438, 123, 'Pink Lemon', '1', ''),
+(439, 123, 'Thyme', '1', 'Bunch'),
+(440, 123, 'Brussels Sprouts', '1/2', 'lb'),
+(441, 123, 'Butter', '2', 'tbsp'),
+(442, 123, 'Roasted Almonds', '2', 'tbsp'),
+(443, 123, 'Shallot', '1', ''),
+(444, 123, 'Chicken Spice Blend', '1 1/2', 'tbsp');
 
 -- --------------------------------------------------------
 
@@ -420,7 +485,14 @@ INSERT INTO `recipe` (`recipe_id`, `title`, `subtitle`, `cooked_on`, `img_src`, 
 (92, 'Shrimp & Pineapple Fried Rice', 'With Toasted Cashews & Sambal Oelek', '02/01/2016', '/images/shrimp_pineapple_fried_rice.jpg', 'https://www.blueapron.com/recipes/shrimp-pineapple-fried-rice-with-cashews-chili-jam'),
 (93, 'Chicken Meatballs & Creamy Polenta', 'With Tomato Sugo $ Lacinato Kale', '01/29/2016', '/images/chicken_meatballs_creamy_polenta.jpg', 'https://www.blueapron.com/recipes/chicken-meatballs-creamy-polenta-with-tomato-sugo-lacinato-kale'),
 (94, 'Roast Pork', 'With Sauteed Spinach & Olive Smashed Potatoes', '01/22/2016', '/images/roast_pork.jpg', 'https://www.blueapron.com/recipes/seared-pork-roast-with-smashed-potatoes-strawberry-rhubarb-compote'),
-(101, 'Smoky Seared Cod', 'With Roasted Potatoes & Dates', '03/27/2017', '/images/smoky_seared_cod.jpg', 'https://www.blueapron.com/recipes/smoky-seared-cod-with-roasted-potato-dates');
+(101, 'Smoky Seared Cod', 'With Roasted Potatoes & Dates', '03/27/2017', '/images/smoky_seared_cod.jpg', 'https://www.blueapron.com/recipes/smoky-seared-cod-with-roasted-potato-dates'),
+(118, 'Seared Salmon & Lemon Labneh', 'With Freekeh, Kale & Dates', '04/08/2017', '/images/seared_salmon_lemon_labneh.jpg', 'https://www.blueapron.com/recipes/seared-salmon-seasoned-labneh-with-freekeh-kale-dates'),
+(119, 'Spinach & Fresh Mozzarella Pizza', 'With Olives, Bell Pepper & Ricotta Salata', '04/10.2017', '/images/spinach_fresh_mozzarella_pizza.jpg', 'https://www.blueapron.com/recipes/spinach-fresh-mozzarella-pizza-with-olives-bell-pepper-ricotta-salata'),
+(117, 'Penne & Arrabbiata Sauce', 'With Roasted Carrot & Tangelo Salad', '04/04/2017', '/images/penne_arrabbiata_sauce.jpg', 'https://www.blueapron.com/recipes/penne-pasta-arrabiata-sauce-with-roasted-carrot-tangelo-salad'),
+(120, 'Chicken Under A &#34;Brick&#34;', 'With Roasted Vegetables & Italian Dressing', '04/16/2017', '/images/chicken_under_a_brick.jpg', 'https://www.blueapron.com/recipes/brick-style-chicken-with-roasted-vegetables-italian-dressing'),
+(121, 'Spanish-Style Potato & Chickpea Stew', 'With Swiss Chard & Aioli', '04/18/2017', '/images/spanish-style_potato_chickpea_stew.jpg', 'https://www.blueapron.com/recipes/spanish-style-potato-chickpea-stew-with-swiss-chard-aioli'),
+(122, 'Spaghetti Bolognese', 'With Butter Lettuce Salad & Creamy Italian Dressing', '04/25/2017', '/images/spaghetti_bolognese.jpg', 'https://www.blueapron.com/recipes/spaghetti-bolognese-with-butter-lettuce-salad-creamy-italian-dressing'),
+(123, 'Za&#39;atar-Spiced Chicken', 'With Pink Lemon Pan Sauce & Pearl Couscous', '04/28/2017', '/images/za&#39;atar-spiced_chicken.jpg', 'https://www.blueapron.com/recipes/za-atar-spiced-chicken-with-pink-lemon-pan-sauce-pearl-couscous');
 
 --
 -- Indexes for dumped tables
@@ -446,12 +518,12 @@ ALTER TABLE `recipe`
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=373;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=445;
 --
 -- AUTO_INCREMENT for table `recipe`
 --
 ALTER TABLE `recipe`
-  MODIFY `recipe_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `recipe_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
