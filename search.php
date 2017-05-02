@@ -47,6 +47,25 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST"){
             }
         ?>
 </div>
+<div class = "container">
+    <h2>All Ingredient List</h2>
+    <?php $ingredient_list = get_all_distinct_ingredients($db); 
+        $i=1;
+        echo "<div class = 'col-md-4'>";
+        foreach($ingredient_list as $item){
+        
+        echo "<form action='search.php' method='post'><input type='submit' value='".$item['ingredient']."' name='search' /></form><br>";
+        
+            //if 10 items have been listed, move to new div
+            if ( is_int($i/10)){
+                echo "<br><br></div><div class = 'col-md-4'>";
+            }
+        $i++;
+        }    
+        echo "</div>";
+    ?>
+                                           
+</div>
 <?php } ?>
 
 <?php require 'inc/footer.php'; ?>
