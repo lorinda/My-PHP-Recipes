@@ -27,7 +27,14 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST"){
 ?>    
 <div class="jumbotron well">
     <h1>Search Results</h1>
-    <h3>For "<?php echo $search; ?>"</h3>
+    <h3>
+         <?php if($search == ''){
+                echo "All Recipes:";
+            }
+            else{
+                echo 'For "'.$search.'"';
+            }?>
+    </h3>
     
     <!-- Search the database for the term, display results-->
     <?php $searchRecipes = search_recipe($db,$search_term); ?>
@@ -39,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"]  == "POST"){
                 $i++;
             }
         ?>
-</div>    
+</div>
 <?php } ?>
 
 <?php require 'inc/footer.php'; ?>
