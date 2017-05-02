@@ -137,6 +137,21 @@ function get_ingredients($db, $id){
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function get_all_distinct_ingredients($db){
+    try{
+        $query = 'SELECT distinct ingredient
+                    FROM ingredients
+                    ORDER BY ingredient ASC';
+        
+    $statement = $db->query($query);
+    $ingredients = $statement->fetchAll();
+    }catch(Exception $e){
+        echo "Could not retrieve ingredients. ".$e->getMessage();
+        exit;
+    }
+    return $ingredients;
+}
+
 function add_ingredient($db, $recipe_id, $ingredient, $amount, $measurement){
     $query = 'INSERT INTO ingredients(recipe_id,ingredient, amount, measurement)
                 VALUES(:recipe_id, :ingredient, :amount, :measurement)';
