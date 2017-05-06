@@ -29,7 +29,13 @@
         </div>
     </form>
     <br>
-    <form action="recipe.php" method="post">
+    <?php 
+        //function to get highest id in recipe table    
+        $id = get_last_id($db);
+        //convert highest id to integer
+        $recipe_id =intval($id['id']);
+    ?>
+    <form action="recipe.php?id=<?php echo $recipe_id; ?>" method="post">
         <label>No more ingredients to add?</label><br>
         <input type="submit" class="btn btn-warning" value="Recipe Finished" />
     </form>
